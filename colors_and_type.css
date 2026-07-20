@@ -1,0 +1,243 @@
+/* ============================================================
+   MARÍA VALLE — Colors & Type
+   ============================================================
+   Core design tokens for the María Valle brand. Two palettes:
+   "Principal" (purple/lavender — primary identity) and
+   "Naranja" (coral/sand — warm alt palette for editorial moments).
+   ============================================================ */
+
+@font-face {
+  font-family: "Syne";
+  src: url("fonts/Syne-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* DM Sans is the recommended body-text pairing (Google Fonts).
+   Substitute flagged in README — user can swap if they have a licensed pair. */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap");
+
+:root {
+  /* ─────────── BRAND COLORS — PRINCIPAL (PURPLE) ─────────── */
+  --mv-indigo:        #29204F;   /* deep brand purple — primary ink */
+  --mv-indigo-700:    #3A2F6E;
+  --mv-indigo-500:    #5A4FA0;
+  --mv-lavender:      #7775B5;   /* lavender — secondary brand color */
+  --mv-lavender-300:  #A8A6D2;
+  --mv-lavender-100:  #DCDBEC;
+  --mv-lilac-tint:    #EEEDF6;   /* lightest wash for backgrounds */
+
+  /* ─────────── BRAND COLORS — NARANJA (CORAL) ─────────── */
+  --mv-coral:         #F1997B;   /* warm coral — accent + alt brand */
+  --mv-coral-300:     #F6BFAB;
+  --mv-coral-100:     #FBE3D8;
+  --mv-sand:          #D4D2C7;   /* warm neutral — paired with coral */
+  --mv-sand-100:      #ECEAE1;
+  --mv-cream:         #F7F4ED;   /* warm off-white page background */
+
+  /* ─────────── NEUTRALS ─────────── */
+  --mv-ink:           #1A1535;   /* near-black, slightly purple tinted */
+  --mv-white:         #FFFFFF;
+  --mv-paper:         #FAF8F3;   /* off-white, the default page bg */
+  --mv-fog:           #F2EFEA;
+  --mv-mist:          #E6E2DA;
+  --mv-stone:         #B6B1A6;
+  --mv-shadow:        #4A4358;
+
+  /* ─────────── SEMANTIC FOREGROUND ─────────── */
+  --fg-1:             var(--mv-indigo);     /* primary text */
+  --fg-2:             var(--mv-shadow);     /* secondary text */
+  --fg-3:             var(--mv-stone);      /* tertiary / muted */
+  --fg-inverse:       var(--mv-paper);      /* text on dark surfaces */
+  --fg-accent:        var(--mv-coral);
+  --fg-brand:         var(--mv-lavender);
+
+  /* ─────────── SEMANTIC BACKGROUND ─────────── */
+  --bg-page:          var(--mv-paper);
+  --bg-surface:       var(--mv-white);
+  --bg-sunken:        var(--mv-fog);
+  --bg-tint:          var(--mv-lilac-tint);
+  --bg-warm-tint:     var(--mv-cream);
+  --bg-inverse:       var(--mv-indigo);
+  --bg-brand:         var(--mv-lavender);
+  --bg-accent:        var(--mv-coral);
+
+  /* ─────────── BORDERS ─────────── */
+  --border-soft:      #E6E2DA;
+  --border-default:   #CFCABE;
+  --border-strong:    var(--mv-indigo);
+
+  /* ─────────── SEMANTIC STATUS ─────────── */
+  --status-success:   #5A8C6A;
+  --status-warning:   #D49A4A;
+  --status-error:     #C25555;
+  --status-info:      var(--mv-lavender);
+
+  /* ─────────── TYPE FAMILIES ─────────── */
+  --font-display:     "Syne", "DM Serif Display", Georgia, serif;
+  --font-body:        "DM Sans", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono:        "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ─────────── TYPE SCALE ─────────── */
+  --fs-display-xl:    clamp(64px, 9vw, 128px);   /* hero / wordmark moments */
+  --fs-display-lg:    clamp(48px, 6vw, 88px);
+  --fs-display-md:    clamp(36px, 4.5vw, 64px);
+  --fs-h1:            44px;
+  --fs-h2:            32px;
+  --fs-h3:            24px;
+  --fs-h4:            20px;
+  --fs-body-lg:       18px;
+  --fs-body:          16px;
+  --fs-small:         14px;
+  --fs-micro:         12px;
+
+  /* ─────────── LINE HEIGHTS ─────────── */
+  --lh-tight:         0.95;
+  --lh-display:       1.05;
+  --lh-heading:       1.15;
+  --lh-body:          1.55;
+  --lh-loose:         1.75;
+
+  /* ─────────── LETTER SPACING ─────────── */
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-eyebrow: 0.18em;   /* uppercase eyebrows / labels */
+
+  /* ─────────── WEIGHTS ─────────── */
+  --w-regular:        400;
+  --w-medium:         500;
+  --w-semibold:       600;
+  --w-bold:           700;
+  --w-extrabold:      800;
+
+  /* ─────────── SPACING (4px base) ─────────── */
+  --space-0:          0;
+  --space-1:          4px;
+  --space-2:          8px;
+  --space-3:          12px;
+  --space-4:          16px;
+  --space-5:          24px;
+  --space-6:          32px;
+  --space-7:          48px;
+  --space-8:          64px;
+  --space-9:          96px;
+  --space-10:         128px;
+
+  /* ─────────── RADII ─────────── */
+  --r-none:           0;
+  --r-sm:             6px;
+  --r-md:             12px;
+  --r-lg:             20px;
+  --r-xl:             32px;
+  --r-pill:           999px;
+
+  /* ─────────── SHADOWS ─────────── */
+  --shadow-xs:        0 1px 2px rgba(41, 32, 79, 0.06);
+  --shadow-sm:        0 2px 6px rgba(41, 32, 79, 0.08);
+  --shadow-md:        0 8px 24px rgba(41, 32, 79, 0.10);
+  --shadow-lg:        0 18px 48px rgba(41, 32, 79, 0.14);
+  --shadow-coral:     0 12px 32px rgba(241, 153, 123, 0.35);
+
+  /* ─────────── MOTION ─────────── */
+  --ease-out:         cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out:      cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring:      cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:         140ms;
+  --dur-base:         240ms;
+  --dur-slow:         420ms;
+
+  /* ─────────── LAYOUT ─────────── */
+  --container-sm:     640px;
+  --container-md:     960px;
+  --container-lg:     1200px;
+  --container-xl:     1440px;
+}
+
+/* ============================================================
+   ELEMENT DEFAULTS — semantic styles attached to real tags
+   ============================================================ */
+
+html, body {
+  background: var(--bg-page);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  color: var(--fg-1);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-tight);
+  font-weight: var(--w-semibold);
+  margin: 0;
+}
+h1 { font-size: var(--fs-h1); line-height: var(--lh-display); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+
+p { margin: 0 0 1em; max-width: 64ch; }
+
+a {
+  color: var(--mv-indigo);
+  text-decoration-color: var(--mv-lavender);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+a:hover { color: var(--mv-coral); text-decoration-color: var(--mv-coral); }
+
+small, .small { font-size: var(--fs-small); color: var(--fg-2); }
+
+code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--bg-sunken);
+  border-radius: var(--r-sm);
+  padding: 2px 6px;
+}
+
+/* ============================================================
+   UTILITY CLASSES — applied composition styles
+   ============================================================ */
+
+.mv-display-xl { font-family: var(--font-display); font-size: var(--fs-display-xl); line-height: var(--lh-tight); letter-spacing: var(--tracking-tight); font-weight: var(--w-medium); font-style: italic; }
+.mv-display-lg { font-family: var(--font-display); font-size: var(--fs-display-lg); line-height: var(--lh-display); letter-spacing: var(--tracking-tight); font-weight: var(--w-semibold); }
+.mv-display-md { font-family: var(--font-display); font-size: var(--fs-display-md); line-height: var(--lh-display); letter-spacing: var(--tracking-tight); font-weight: var(--w-semibold); }
+
+.mv-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-micro);
+  font-weight: var(--w-semibold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--mv-lavender);
+}
+
+.mv-script {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.mv-card {
+  background: var(--bg-surface);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-sm);
+}
+
+.mv-pattern-bg {
+  background-image: url("assets/patterns/pattern-principal-35.png");
+  background-size: 360px auto;
+  background-repeat: repeat;
+}
+.mv-pattern-bg--naranja {
+  background-image: url("assets/patterns/pattern-naranja-35.png");
+}

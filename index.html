@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>María Valle — Portfolio</title>
+<meta name="description" content="Portfolio de María Valle, diseñadora gráfica y digital: identidad de marca, redes sociales, contenido y experiencias web con calma y criterio." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="María Valle — Portfolio" />
+<meta property="og:description" content="Diseño identidad, contenido y experiencias digitales para marcas que quieren contar algo de verdad." />
+<meta property="og:image" content="assets/about/foto-maria.jpeg" />
+<link rel="stylesheet" href="colors_and_type.css?v=2" />
+<link rel="stylesheet" href="portfolio.css?v=2" />
+<link rel="icon" href="assets/logos/isotipo-principal.png" />
+</head>
+<body data-lang="es">
+
+<!-- ===== custom cursor ===== -->
+<div class="cursor" aria-hidden="true">
+  <div class="cursor__ring"><span class="cursor__label"></span></div>
+  <div class="cursor__dot"></div>
+</div>
+
+<!-- ===== scroll progress ===== -->
+<div class="progress" aria-hidden="true"></div>
+
+<!-- ===== fixed chrome ===== -->
+<header class="chrome-top">
+  <a class="brandmark" href="#hero" data-cursor="inicio">
+    <img src="assets/logos/logo-principal.png" alt="María Valle" />
+  </a>
+  <div class="lang-switch" role="group" aria-label="Idioma">
+    <button data-lang="es" class="is-active">ES</button>
+    <button data-lang="en">EN</button>
+  </div>
+</header>
+
+<!-- ===== dot nav ===== -->
+<nav class="dotnav" aria-label="Secciones">
+  <a href="#hero"><span class="dotnav__label"><span lang="es">Inicio</span><span lang="en">Start</span></span><span class="dotnav__dot"></span></a>
+  <a href="#about"><span class="dotnav__label"><span lang="es">Sobre mí</span><span lang="en">About</span></span><span class="dotnav__dot"></span></a>
+  <a href="#services"><span class="dotnav__label"><span lang="es">Servicios</span><span lang="en">Services</span></span><span class="dotnav__dot"></span></a>
+  <a href="#p-nucia"><span class="dotnav__label">La Nucia One</span><span class="dotnav__dot"></span></a>
+  <a href="#p-gregal"><span class="dotnav__label">Gregal</span><span class="dotnav__dot"></span></a>
+  <a href="#p-bora"><span class="dotnav__label">Bora</span><span class="dotnav__dot"></span></a>
+  <a href="#p-logo"><span class="dotnav__label">Logofolio</span><span class="dotnav__dot"></span></a>
+  <a href="#p-activum"><span class="dotnav__label">Activum</span><span class="dotnav__dot"></span></a>
+  <a href="#p-rrss"><span class="dotnav__label">Redes</span><span class="dotnav__dot"></span></a>
+  <a href="#contact"><span class="dotnav__label"><span lang="es">Contacto</span><span lang="en">Contact</span></span><span class="dotnav__dot"></span></a>
+</nav>
+
+<main>
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero section" id="hero">
+    <div class="hero__pattern" aria-hidden="true"></div>
+    <div class="hero__pattern hero__pattern--glow" aria-hidden="true"></div>
+    <div class="mascot hero__mascot mascot--talk" data-parallax="22" aria-hidden="true">
+      <img src="assets/mini-maria/mini-maria-principal.png" alt="Mini María" />
+      <span class="mascot-eyes mascot-eyes--l"></span>
+      <span class="mascot-eyes mascot-eyes--r"></span>
+    </div>
+    <div class="wrap hero__inner">
+      <span class="eyebrow hero__eyebrow reveal">
+        <span lang="es">portfolio · diseñadora gráfica &amp; digital</span>
+        <span lang="en">portfolio · graphic &amp; digital designer</span>
+      </span>
+      <img class="hero__wordmark reveal" data-delay="1" src="assets/logos/logo-principal.png" alt="María Valle" />
+      <p class="hero__tag reveal" data-delay="2" lang="es">marcas que se sienten en casa.</p>
+      <p class="hero__tag reveal" data-delay="2" lang="en">brands that feel like home.</p>
+      <p class="hero__role reveal" data-delay="3" lang="es">Diseño identidad, contenido y experiencias digitales para marcas que quieren contar algo de verdad — con calma, criterio y mucho mimo por el detalle.</p>
+      <p class="hero__role reveal" data-delay="3" lang="en">I design identity, content and digital experiences for brands with something real to say — with calm, intention and close attention to detail.</p>
+    </div>
+    <div class="hero__scroll" aria-hidden="true">
+      <span lang="es">scroll</span><span lang="en">scroll</span>
+      <span class="hero__scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- ============================ ABOUT ============================ -->
+  <section class="about section" id="about">
+    <div class="mascot mascot--talk mascot--mini" aria-hidden="true" data-parallax="16" style="position:absolute; right:5%; top:9%; width:clamp(54px,6vw,86px); z-index:4">
+      <img src="assets/mini-maria/mini-maria-principal.png" alt="Mini María" />
+      <span class="mascot-eyes mascot-eyes--l"></span>
+      <span class="mascot-eyes mascot-eyes--r"></span>
+    </div>
+    <div class="wrap about__grid">
+      <div class="about__visual reveal" data-cursor="¡hola!">
+        <img class="about__photo" src="assets/about/foto-maria.jpeg" alt="María Valle" />
+      </div>
+      <div class="about__text">
+        <span class="eyebrow reveal"><span lang="es">hola, soy maría</span><span lang="en">hi, I'm maría</span></span>
+        <h2 class="about__title reveal" data-delay="1" lang="es">Diseño desde la <em>calma</em> — y desde el detalle.</h2>
+        <h2 class="about__title reveal" data-delay="1" lang="en">I design from <em>calm</em> — and from the detail.</h2>
+        <p class="about__body reveal" data-delay="2" lang="es">Soy diseñadora gráfica y digital. Me dedico a dar forma a marcas: desde el logo y la identidad, hasta sus redes, su web y todo el material que las hace reconocibles. Me gusta entender bien el problema antes de abrir el Illustrator.</p>
+        <p class="about__body reveal" data-delay="2" lang="en">I'm a graphic and digital designer. I give shape to brands — from the logo and identity to their social media, their website and every piece that makes them recognisable. I like to understand the problem well before opening Illustrator.</p>
+        <ol class="about__steps reveal" data-delay="3">
+          <li><span class="n">01</span><div><h4 lang="es">Escucho</h4><h4 lang="en">I listen</h4><p lang="es">Entender el problema real, no el aparente. Cada marca llega con una historia distinta.</p><p lang="en">Understand the real problem, not the obvious one. Every brand arrives with a different story.</p></div></li>
+          <li><span class="n">02</span><div><h4 lang="es">Doy forma</h4><h4 lang="en">I shape it</h4><p lang="es">Explorar y decidir con criterio: cada color y cada tipografía tiene un porqué.</p><p lang="en">Explore and decide with intent: every colour and typeface has a reason.</p></div></li>
+          <li><span class="n">03</span><div><h4 lang="es">Cuido</h4><h4 lang="en">I care</h4><p lang="es">Los detalles pequeños son los que hacen que una marca se sienta cuidada.</p><p lang="en">The small details are what make a brand feel looked after.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ SERVICES ============================ -->
+  <section class="services section" id="services">
+    <div class="wrap">
+      <div class="services__head">
+        <div>
+          <span class="eyebrow eyebrow--accent reveal" style="--accent:var(--mv-coral)"><span lang="es">qué hago</span><span lang="en">what I do</span></span>
+          <h2 class="services__title reveal" data-delay="1" lang="es">Un poco de <em>todo</em>, con coherencia.</h2>
+          <h2 class="services__title reveal" data-delay="1" lang="en">A little of <em>everything</em>, with coherence.</h2>
+        </div>
+        <p class="services__lead reveal" data-delay="2" lang="es">Trabajo el diseño de principio a fin: la marca, cómo se cuenta y dónde vive.</p>
+        <p class="services__lead reveal" data-delay="2" lang="en">I work design end to end: the brand, how it's told and where it lives.</p>
+      </div>
+      <div class="services__grid">
+        <a class="svc reveal" href="#p-logo" style="--svc-photo:url('assets/logofolio/kroma-web.png')" data-cursor="ver proyecto"><span class="svc__photo" aria-hidden="true"></span><span class="svc__dot"></span><span class="svc__num">01</span><h3 lang="es">Identidad &amp; branding</h3><h3 lang="en">Identity &amp; branding</h3><p lang="es">Logos, paletas, tipografías y manuales que dan personalidad y coherencia a una marca.</p><p lang="en">Logos, palettes, type and guidelines that give a brand personality and coherence.</p><span class="svc__go"><span lang="es">ver proyecto</span><span lang="en">view project</span> →</span></a>
+        <a class="svc reveal" data-delay="1" href="#p-rrss" style="--svc-photo:url('assets/rrss/blink-1.png')" data-cursor="ver proyecto"><span class="svc__photo" aria-hidden="true"></span><span class="svc__dot"></span><span class="svc__num">02</span><h3 lang="es">Redes sociales</h3><h3 lang="en">Social media</h3><p lang="es">Diseño y gestión de contenido para Instagram y LinkedIn, con calendario y métricas.</p><p lang="en">Content design and management for Instagram and LinkedIn, with calendar and metrics.</p><span class="svc__go"><span lang="es">ver proyecto</span><span lang="en">view project</span> →</span></a>
+        <a class="svc reveal" data-delay="2" href="#p-activum" style="--svc-photo:url('assets/dossier/dossier-mockup.png')" data-cursor="ver proyecto"><span class="svc__photo" aria-hidden="true"></span><span class="svc__dot"></span><span class="svc__num">03</span><h3 lang="es">Material comercial</h3><h3 lang="en">Commercial collateral</h3><p lang="es">Dossieres, cartelería, newsletters y todo el material que una empresa necesita.</p><p lang="en">Dossiers, signage, newsletters and every piece a company needs.</p><span class="svc__go"><span lang="es">ver proyecto</span><span lang="en">view project</span> →</span></a>
+        <a class="svc reveal" href="#p-nucia" data-cursor="ver proyecto"><span class="svc__photo" aria-hidden="true"></span><span class="svc__dot"></span><span class="svc__num">04</span><h3 lang="es">Web &amp; landing</h3><h3 lang="en">Web &amp; landing</h3><p lang="es">Webs completas y landings de captación, diseñadas para mirar y para convertir.</p><p lang="en">Full websites and lead-capture landings, designed to look good and convert.</p><span class="svc__go"><span lang="es">ver proyecto</span><span lang="en">view project</span> →</span></a>
+        <a class="svc reveal" data-delay="1" href="#p-bora" style="--svc-photo:url('assets/bora/bora-principal.png')" data-cursor="ver proyecto"><span class="svc__photo" aria-hidden="true"></span><span class="svc__dot"></span><span class="svc__num">05</span><h3 lang="es">Dirección de arte</h3><h3 lang="en">Art direction</h3><p lang="es">Eventos corporativos, campañas y piezas especiales con una mirada unificada.</p><p lang="en">Corporate events, campaigns and special pieces with one unified eye.</p><span class="svc__go"><span lang="es">ver proyecto</span><span lang="en">view project</span> →</span></a>
+        <a class="svc reveal" data-delay="2" href="#p-gregal" data-cursor="ver proyecto"><span class="svc__photo" aria-hidden="true"></span><span class="svc__dot"></span><span class="svc__num">06</span><h3 lang="es">Contenido &amp; copy</h3><h3 lang="en">Content &amp; copy</h3><p lang="es">Textos y mensajes que acompañan al diseño y suenan a la marca, no a relleno.</p><p lang="en">Words and messages that match the design and sound like the brand, not filler.</p><span class="svc__go"><span lang="es">ver proyecto</span><span lang="en">view project</span> →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ TOOLS ============================ -->
+  <section class="tools section">
+    <div class="mascot mascot--talk mascot--mini" aria-hidden="true" data-parallax="22" style="position:absolute; right:7%; top:6%; width:clamp(50px,5.5vw,78px); z-index:4">
+      <img src="assets/mini-maria/mini-maria-invertido.png" alt="Mini María" />
+      <span class="mascot-eyes mascot-eyes--l" style="--lid:var(--mv-indigo)"></span>
+      <span class="mascot-eyes mascot-eyes--r" style="--lid:var(--mv-indigo)"></span>
+    </div>
+    <div class="tools__head wrap">
+      <span class="eyebrow reveal" style="justify-content:center"><span lang="es">mis herramientas</span><span lang="en">my toolkit</span></span>
+      <h3 class="reveal" data-delay="1" lang="es">las que uso cada día.</h3>
+      <h3 class="reveal" data-delay="1" lang="en">the ones I use every day.</h3>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track" id="tools-track"></div>
+    </div>
+  </section>
+
+  <!-- ============================ PROJECTS ============================ -->
+  <section class="projects-intro section">
+    <div class="mascot mascot--talk mascot--mini" aria-hidden="true" data-parallax="20" style="position:absolute; left:6%; top:14%; width:clamp(58px,7vw,98px); z-index:3">
+      <img src="assets/mini-maria/mini-maria-principal.png" alt="Mini María" />
+      <span class="mascot-eyes mascot-eyes--l"></span>
+      <span class="mascot-eyes mascot-eyes--r"></span>
+    </div>
+    <div class="wrap projects-intro__inner">
+      <span class="eyebrow eyebrow--accent reveal" style="--accent:var(--mv-coral); justify-content:center"><span lang="es">selección de trabajos</span><span lang="en">selected work</span></span>
+      <h2 class="projects-intro__title reveal" data-delay="1" lang="es">Mis <em>Proyectos</em></h2>
+      <h2 class="projects-intro__title reveal" data-delay="1" lang="en">My <em>Projects</em></h2>
+      <p class="projects-intro__lead reveal" data-delay="2" lang="es">Seis trabajos donde marca, contenido y producto digital se cuidan por igual — de la identidad a la web.</p>
+      <p class="projects-intro__lead reveal" data-delay="2" lang="en">Six projects where brand, content and digital product get equal care — from identity to the web.</p>
+    </div>
+  </section>
+
+  <!-- ===== 1 · LA NUCIA ONE ===== -->
+  <section class="project section" id="p-nucia" style="--accent:#2E7D8C;--accent-soft:#DCEAED;--accent-ink:#163d45">
+    <div class="wrap">
+      <span class="project__index">01</span>
+      <div class="project__head">
+        <div class="mascot project__mascot project__mascot--l reveal mascot--talk" aria-hidden="true">
+          <img src="assets/mini-maria/mini-maria-principal.png" alt="Mini María" />
+          <span class="mascot-eyes mascot-eyes--l"></span>
+          <span class="mascot-eyes mascot-eyes--r"></span>
+        </div>
+        <div class="project__client"><span class="chip">Web · Lovable</span></div>
+        <h2 class="project__title reveal" lang="es">La Nucia <em>One</em></h2>
+        <h2 class="project__title reveal" lang="en">La Nucia <em>One</em></h2>
+        <div class="project__meta reveal" data-delay="1">
+          <span lang="es"><b>Rol:</b> Diseño y desarrollo web</span>
+          <span lang="en"><b>Role:</b> Web design &amp; build</span>
+          <span><b>2025</b></span>
+          <span lang="es"><b>Cliente:</b> lanuciaone.com</span>
+          <span lang="en"><b>Client:</b> lanuciaone.com</span>
+        </div>
+        <div class="project__tools reveal" data-delay="2"><span>Lovable</span><span>Figma</span><span>Illustrator</span></div>
+      </div>
+
+      <div class="reveal" data-parallax="14" style="margin-bottom:46px">
+        <div class="frame-browser">
+          <div class="frame-browser__bar"><span class="frame-browser__dots"><i></i><i></i><i></i></span><span class="frame-browser__url">www.lanuciaone.com</span></div>
+          <iframe class="frame-embed" src="https://www.lanuciaone.com" title="La Nucia One — web" loading="lazy"></iframe>
+        </div>
+        <p class="frame-embed-note"><span lang="es">↑ web real incrustada y navegable · si el navegador la bloquea, sube una captura aquí</span><span lang="en">↑ real site embedded &amp; navigable · if the browser blocks it, drop a screenshot here</span></p>
+        <div class="visit-web reveal"><a class="btn-visit" href="https://www.lanuciaone.com" target="_blank" rel="noopener" data-cursor="abrir web"><span lang="es">visitar web</span><span lang="en">visit website</span><span class="btn-visit__arrow">↗</span></a></div>
+      </div>
+
+      <div class="ppr">
+        <div class="ppr__block reveal"><div class="ppr__label"><span class="step">01</span><span lang="es">El reto</span><span lang="en">The challenge</span></div><h4 lang="es">Una web entera, desde cero y sin plantilla.</h4><h4 lang="en">A whole website, from scratch, no template.</h4><p lang="es">La Nucia One necesitaba un sitio que reuniera toda su oferta en un único lugar: claro, moderno y fácil de mantener, sin un gran presupuesto de desarrollo.</p><p lang="en">La Nucia One needed a site that gathered its whole offering in one place: clear, modern and easy to maintain, without a big development budget.</p></div>
+        <div class="ppr__block reveal" data-delay="1"><div class="ppr__label"><span class="step">02</span><span lang="es">El proceso</span><span lang="en">The process</span></div><h4 lang="es">Diseñar y construir en Lovable.</h4><h4 lang="en">Design and build in Lovable.</h4><p lang="es">Definí estructura, identidad y contenido, y lo construí en Lovable para iterar rápido.</p><p lang="en">I defined structure, identity and content, then built it in Lovable to iterate fast.</p><ul><li lang="es">Jerarquía clara y mucho aire</li><li lang="en">Clear hierarchy, lots of breathing room</li><li lang="es">CTA siempre a la vista</li><li lang="en">CTA always in sight</li><li lang="es">100% responsive</li><li lang="en">100% responsive</li></ul></div>
+        <div class="ppr__block reveal" data-delay="2"><div class="ppr__label"><span class="step">03</span><span lang="es">El resultado</span><span lang="en">The result</span></div><h4 lang="es">Una web viva y lista para crecer.</h4><h4 lang="en">A living site, ready to grow.</h4><p lang="es">Un sitio a medida, rápido y autoadministrable, que la marca puede actualizar sin depender de nadie.</p><p lang="en">A bespoke, fast, self-manageable site the brand can update without depending on anyone.</p></div>
+      </div>
+
+      <div class="metrics reveal">
+        <div class="metric"><span class="metric__num"><span class="count" data-count="1">1</span></span><span class="metric__label" lang="es">web completa a medida</span><span class="metric__label" lang="en">full bespoke website</span></div>
+        <div class="metric"><span class="metric__num"><span class="count" data-count="100">100</span><em>%</em></span><span class="metric__label" lang="es">responsive, móvil y escritorio</span><span class="metric__label" lang="en">responsive, mobile &amp; desktop</span></div>
+        <div class="metric"><span class="metric__num"><span class="count" data-count="0">0</span></span><span class="metric__label" lang="es">plantillas — todo diseñado a mano</span><span class="metric__label" lang="en">templates — all designed by hand</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2 · RESIDENCIAL GREGAL ===== -->
+  <section class="project section" id="p-gregal" style="--accent:#C2884A;--accent-soft:#F3E7D6;--accent-ink:#6b4a23">
+    <div class="wrap">
+      <span class="project__index">02</span>
+      <div class="project__head">
+        <div class="mascot project__mascot project__mascot--r reveal mascot--talk" aria-hidden="true">
+          <img src="assets/mini-maria/mini-maria-invertido.png" alt="Mini María" />
+          <span class="mascot-eyes mascot-eyes--l" style="--lid:var(--mv-indigo)"></span>
+          <span class="mascot-eyes mascot-eyes--r" style="--lid:var(--mv-indigo)"></span>
+        </div>
+        <div class="project__client"><span class="chip">Landing · WordPress</span></div>
+        <h2 class="project__title reveal" lang="es">Residencial <em>Gregal</em></h2>
+        <h2 class="project__title reveal" lang="en">Residencial <em>Gregal</em></h2>
+        <div class="project__meta reveal" data-delay="1">
+          <span lang="es"><b>Rol:</b> Landing de captación de leads</span>
+          <span lang="en"><b>Role:</b> Lead-capture landing</span>
+          <span><b>2025</b></span>
+          <span lang="es"><b>Campañas:</b> Google Ads + Meta</span>
+          <span lang="en"><b>Campaigns:</b> Google Ads + Meta</span>
+        </div>
+        <div class="project__tools reveal" data-delay="2"><span>WordPress</span><span>Illustrator</span><span>Canva</span></div>
+      </div>
+
+      <div class="reveal" data-parallax="14" style="margin-bottom:46px">
+        <div class="frame-browser">
+          <div class="frame-browser__bar"><span class="frame-browser__dots"><i></i><i></i><i></i></span><span class="frame-browser__url">residencialgregal.com</span></div>
+          <iframe class="frame-embed" src="https://residencialgregal.com" title="Residencial Gregal — landing" loading="lazy"></iframe>
+        </div>
+        <p class="frame-embed-note"><span lang="es">↑ landing real incrustada y navegable · si el navegador la bloquea, sube una captura aquí</span><span lang="en">↑ real landing embedded &amp; navigable · if the browser blocks it, drop a screenshot here</span></p>
+        <div class="visit-web reveal"><a class="btn-visit" href="https://residencialgregal.com" target="_blank" rel="noopener" data-cursor="abrir web"><span lang="es">visitar web</span><span lang="en">visit website</span><span class="btn-visit__arrow">↗</span></a></div>
+      </div>
+
+      <div class="ppr">
+        <div class="ppr__block reveal"><div class="ppr__label"><span class="step">01</span><span lang="es">El reto</span><span lang="en">The challenge</span></div><h4 lang="es">Convertir clics de anuncios en leads reales.</h4><h4 lang="en">Turn ad clicks into real leads.</h4><p lang="es">Una promoción de obra nueva necesitaba captar contactos cualificados desde Google Ads y Meta, con una página rápida y enfocada a un único objetivo.</p><p lang="en">A new-build development needed qualified leads from Google Ads and Meta, with a fast page focused on a single goal.</p></div>
+        <div class="ppr__block reveal" data-delay="1"><div class="ppr__label"><span class="step">02</span><span lang="es">El proceso</span><span lang="en">The process</span></div><h4 lang="es">Una landing de un solo objetivo.</h4><h4 lang="en">A single-goal landing.</h4><p lang="es">Sin menú que distraiga: propuesta + formulario arriba, y prueba visual debajo.</p><p lang="en">No distracting menu: pitch + form up top, visual proof below.</p><ul><li lang="es">Formulario above the fold</li><li lang="en">Form above the fold</li><li lang="es">CTA repetido por secciones</li><li lang="en">CTA repeated through sections</li><li lang="es">Renders + ubicación como prueba</li><li lang="en">Renders + location as proof</li></ul></div>
+        <div class="ppr__block reveal" data-delay="2"><div class="ppr__label"><span class="step">03</span><span lang="es">El resultado</span><span lang="en">The result</span></div><h4 lang="es">Medible, optimizable y alineada con las campañas.</h4><h4 lang="en">Measurable, optimisable, campaign-aligned.</h4><p lang="es">Una página coherente con los anuncios, lista para hacer A/B y mejorar la conversión.</p><p lang="en">A page consistent with the ads, ready for A/B testing and conversion gains.</p></div>
+      </div>
+
+      <div class="metrics reveal">
+        <div class="metric"><span class="metric__num"><span class="count" data-count="1">1</span></span><span class="metric__label" lang="es">objetivo claro: el formulario</span><span class="metric__label" lang="en">one clear goal: the form</span></div>
+        <div class="metric"><span class="metric__num">+ <em>leads</em></span><span class="metric__label" lang="es">captados desde Ads (edita el dato real)</span><span class="metric__label" lang="en">captured from Ads (edit the real figure)</span></div>
+        <div class="metric"><span class="metric__num">%</span><span class="metric__label" lang="es">tasa de conversión (añade tu métrica)</span><span class="metric__label" lang="en">conversion rate (add your metric)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3 · RESIDENCIAL BORA ===== -->
+  <section class="project section" id="p-bora" style="--accent:#3A4F44;--accent-soft:#D8E9D2;--accent-ink:#26352e">
+    <div class="wrap">
+      <span class="project__index">03</span>
+      <div class="project__head">
+        <div class="mascot project__mascot project__mascot--l reveal mascot--talk" aria-hidden="true">
+          <img src="assets/mini-maria/mini-maria-principal.png" alt="Mini María" />
+          <span class="mascot-eyes mascot-eyes--l"></span>
+          <span class="mascot-eyes mascot-eyes--r"></span>
+        </div>
+        <div class="project__client"><span class="chip">Rebranding · Identidad</span></div>
+        <h2 class="project__title reveal" lang="es">Residencial <em>Bora</em></h2>
+        <h2 class="project__title reveal" lang="en">Residencial <em>Bora</em></h2>
+        <div class="project__meta reveal" data-delay="1">
+          <span lang="es"><b>Rol:</b> Rebranding e identidad visual</span>
+          <span lang="en"><b>Role:</b> Rebranding &amp; visual identity</span>
+          <span><b>2025</b></span>
+          <span lang="es"><b>Inspiración:</b> jardines de la Alhambra</span>
+          <span lang="en"><b>Inspiration:</b> the gardens of the Alhambra</span>
+        </div>
+        <div class="project__tools reveal" data-delay="2"><span>Illustrator</span><span>Canva</span><span>InDesign</span></div>
+      </div>
+
+      <!-- brand board -->
+      <div class="reveal" style="display:grid;grid-template-columns:1.3fr 1fr;gap:18px;margin-bottom:46px" data-parallax="12">
+        <div style="background:#D8E9D2;border-radius:var(--r-xl);display:grid;place-items:center;min-height:300px;position:relative;overflow:hidden;padding:8%">
+          <img src="assets/bora/bora-principal.png" alt="Residencial Bora" style="max-width:78%;max-height:70%;object-fit:contain" />
+        </div>
+        <div style="display:grid;gap:18px">
+          <div style="background:var(--bg-surface);border:1px solid var(--border-soft);border-radius:var(--r-xl);padding:26px">
+            <div class="eyebrow eyebrow--accent" style="margin-bottom:16px"><span lang="es">paleta</span><span lang="en">palette</span></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <span title="#D8E9D2" style="width:46px;height:46px;border-radius:50%;background:#D8E9D2;border:1px solid rgba(0,0,0,.05)"></span>
+              <span title="#3A4F44" style="width:46px;height:46px;border-radius:50%;background:#3A4F44"></span>
+              <span title="#EED1E1" style="width:46px;height:46px;border-radius:50%;background:#EED1E1"></span>
+              <span title="#B1E0D7" style="width:46px;height:46px;border-radius:50%;background:#B1E0D7"></span>
+              <span title="#F2F4F7" style="width:46px;height:46px;border-radius:50%;background:#F2F4F7;border:1px solid rgba(0,0,0,.05)"></span>
+            </div>
+          </div>
+          <div style="background:var(--bg-surface);border:1px solid var(--border-soft);border-radius:var(--r-xl);padding:26px">
+            <div class="eyebrow eyebrow--accent" style="margin-bottom:12px"><span lang="es">tipografía</span><span lang="en">type</span></div>
+            <div style="font-family:var(--font-display);font-size:34px;color:#3A4F44;line-height:1;font-style:italic">TAN Meringue</div>
+            <div style="font-family:var(--font-body);font-weight:700;font-size:18px;color:#3A4F44;margin-top:8px;letter-spacing:.02em">Montserrat</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ppr">
+        <div class="ppr__block reveal"><div class="ppr__label"><span class="step">01</span><span lang="es">El reto</span><span lang="en">The challenge</span></div><h4 lang="es">Una marca a la altura de su entorno.</h4><h4 lang="en">A brand worthy of its surroundings.</h4><p lang="es">Bora tenía una identidad anticuada e inconsistente. Pedía algo elegante y sereno, inspirado en la naturaleza y la arquitectura nazarí.</p><p lang="en">Bora had a dated, inconsistent identity. It called for something elegant and serene, inspired by nature and Nasrid architecture.</p></div>
+        <div class="ppr__block reveal" data-delay="1"><div class="ppr__label"><span class="step">02</span><span lang="es">El proceso</span><span lang="en">The process</span></div><h4 lang="es">Rebranding completo, de la A a la Z.</h4><h4 lang="en">A complete rebrand, A to Z.</h4><p lang="es">Logo principal y alternativos, paleta verde Alhambra con acentos suaves y un sistema tipográfico de contraste.</p><p lang="en">Primary and alternative logos, an Alhambra-green palette with soft accents, and a contrasting type system.</p><ul><li lang="es">TAN Meringue para alma + Montserrat para claridad</li><li lang="en">TAN Meringue for soul + Montserrat for clarity</li><li lang="es">Moodboard: jardines, agua y piedra</li><li lang="en">Moodboard: gardens, water and stone</li></ul></div>
+        <div class="ppr__block reveal" data-delay="2"><div class="ppr__label"><span class="step">03</span><span lang="es">El resultado</span><span lang="en">The result</span></div><h4 lang="es">Una identidad coherente y aplicable.</h4><h4 lang="en">A coherent, applicable identity.</h4><p lang="es">Un manual de marca que vive igual de bien en cartelería, dossieres y digital.</p><p lang="en">A brand book that lives equally well across signage, dossiers and digital.</p></div>
+      </div>
+
+      <div class="metrics reveal">
+        <div class="metric"><span class="metric__num"><span class="count" data-count="1">1</span></span><span class="metric__label" lang="es">manual de identidad completo</span><span class="metric__label" lang="en">complete identity manual</span></div>
+        <div class="metric"><span class="metric__num"><span class="count" data-count="3">3</span></span><span class="metric__label" lang="es">versiones de logo</span><span class="metric__label" lang="en">logo versions</span></div>
+        <div class="metric"><span class="metric__num"><span class="count" data-count="5">5</span></span><span class="metric__label" lang="es">colores de marca</span><span class="metric__label" lang="en">brand colours</span></div>
+      </div>
+
+      <div class="landing-call reveal">
+        <div class="landing-call__text">
+          <span class="eyebrow eyebrow--accent"><span lang="es">y además…</span><span lang="en">and also…</span></span>
+          <h4 lang="es">También diseñé y construí su landing en WordPress.</h4>
+          <h4 lang="en">I also designed and built its landing in WordPress.</h4>
+          <p lang="es">La nueva identidad cobra vida en una landing propia, hecha a medida sobre WordPress.</p>
+          <p lang="en">The new identity comes to life on its own bespoke landing, built on WordPress.</p>
+        </div>
+        <a class="btn-visit btn-visit--solid" href="https://www.residencialbora.com" target="_blank" rel="noopener" data-cursor="abrir web"><span lang="es">visitar web</span><span lang="en">visit website</span><span class="btn-visit__arrow">↗</span></a>
+      </div>
+
+      <div class="gallery">
+        <div class="brand__mockups brand__mockups--3 brand__mockups--marks" style="border:1px solid var(--border-soft);border-radius:var(--r-xl);margin-bottom:16px">
+          <div class="shot shot--mark" style="background:#D8E9D2"><img src="assets/bora/bora-verde-oscuro.png" alt="Bora — logo principal" /><span class="shot__cap" lang="es">Logo principal</span><span class="shot__cap" lang="en">Primary logo</span></div>
+          <div class="shot shot--mark" style="background:#3A4F44"><img src="assets/bora/bora-blanco.png" alt="Bora — logo invertido" /><span class="shot__cap" lang="es">Logo invertido</span><span class="shot__cap" lang="en">Inverted logo</span></div>
+          <div class="shot shot--mark" style="background:#EED1E1"><img src="assets/bora/bora-principal.png" alt="Bora — versión horizontal" /><span class="shot__cap" lang="es">Versión horizontal</span><span class="shot__cap" lang="en">Horizontal lockup</span></div>
+        </div>
+        <div class="shot reveal" style="border-radius:var(--r-lg);background:#F2F4F7;padding:18px 18px 16px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:center">
+          <img src="assets/bora/bora-manual.png" alt="Manual de identidad — Residencial Bora" style="width:130px;height:auto;border-radius:8px;box-shadow:var(--shadow-sm);display:block" />
+          <div style="max-width:34ch">
+            <div class="eyebrow eyebrow--accent" style="margin-bottom:6px"><span lang="es">documentación</span><span lang="en">documentation</span></div>
+            <p style="margin:0;font-size:14px;color:var(--mv-shadow);line-height:1.55" lang="es">Manual de identidad completo: logo, versiones, paleta, tipografía y moodboard.</p>
+            <p style="margin:0;font-size:14px;color:var(--mv-shadow);line-height:1.55" lang="en">Full identity manual: logo, versions, palette, type and moodboard.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4 · LOGOFOLIO ===== -->
+  <section class="project section" id="p-logo" style="--accent:#5A4FA0;--accent-soft:#E7E4F2;--accent-ink:#29204F">
+    <div class="wrap">
+      <span class="project__index">04</span>
+      <div class="project__head">
+        <div class="mascot project__mascot project__mascot--r reveal mascot--talk" aria-hidden="true">
+          <img src="assets/mini-maria/mini-maria-invertido.png" alt="Mini María" />
+          <span class="mascot-eyes mascot-eyes--l" style="--lid:var(--mv-indigo)"></span>
+          <span class="mascot-eyes mascot-eyes--r" style="--lid:var(--mv-indigo)"></span>
+        </div>
+        <div class="project__client"><span class="chip">Logofolio · Branding</span></div>
+        <h2 class="project__title reveal" lang="es">Logo<em>folio</em></h2>
+        <h2 class="project__title reveal" lang="en">Logo<em>folio</em></h2>
+        <div class="project__meta reveal" data-delay="1">
+          <span lang="es"><b>Rol:</b> Diseño de marca</span>
+          <span lang="en"><b>Role:</b> Brand &amp; logo design</span>
+          <span><b>2024–25</b></span>
+          <span lang="es"><b>Marcas:</b> Kroma Living · Array.Go · Hëlia</span>
+          <span lang="en"><b>Brands:</b> Kroma Living · Array.Go · Hëlia</span>
+        </div>
+        <div class="project__tools reveal" data-delay="2"><span>Illustrator</span><span>InDesign</span><span>Canva</span></div>
+      </div>
+
+      <div class="ppr" style="grid-template-columns:1fr 1fr">
+        <div class="ppr__block reveal"><div class="ppr__label"><span class="step">01</span><span lang="es">El reto</span><span lang="en">The challenge</span></div><h4 lang="es">Tres marcas, tres personalidades.</h4><h4 lang="en">Three brands, three personalities.</h4><p lang="es">Cada una pedía un lenguaje propio: Kroma Living y Array.Go con identidad completa; Hëlia, una base sólida de logo, paleta y tipografía.</p><p lang="en">Each needed its own language: full identities for Kroma Living and Array.Go; for Hëlia, a solid base of logo, palette and type.</p></div>
+        <div class="ppr__block reveal" data-delay="1"><div class="ppr__label"><span class="step">02</span><span lang="es">El proceso</span><span lang="en">The process</span></div><h4 lang="es">Del concepto al símbolo.</h4><h4 lang="en">From concept to symbol.</h4><p lang="es">Investigación, bocetos a mano, vectorización y construcción del sistema. Cada decisión —el color, la forma, la tipografía— responde a lo que la marca quiere transmitir.</p><p lang="en">Research, hand sketches, vectorisation and system-building. Every decision —colour, form, type— answers what the brand wants to say.</p></div>
+      </div>
+
+      <div class="brands">
+
+        <!-- KROMA LIVING -->
+        <article class="brand reveal">
+          <div class="brand__top">
+            <div class="brand__logo" style="background:#F4EEE6"><span class="brand__orb" style="background:radial-gradient(circle at 30% 40%,#F0A177,transparent 60%),radial-gradient(circle at 70% 60%,#A9C9E8,transparent 60%),radial-gradient(circle at 50% 80%,#C6ADD9,transparent 60%)"></span><img src="assets/logofolio/kroma-logo.png" alt="Kroma Living" /></div>
+            <div class="brand__info">
+              <div class="brand__name-row"><h3 class="brand__name">Kroma Living</h3><span class="brand__tag">by Activum</span></div>
+              <span class="brand__scope" lang="es">identidad completa · packaging · web</span><span class="brand__scope" lang="en">full identity · packaging · web</span>
+              <p class="brand__desc" lang="es">Un espacio de vida flexible con alma cálida. La identidad gira en torno a un símbolo de color —un espectro suave que se degrada— sobre un azul noche profundo. Serena, luminosa y cercana.</p>
+              <p class="brand__desc" lang="en">A flexible living space with a warm soul. The identity revolves around a colour symbol —a soft, fading spectrum— over deep night blue. Serene, luminous, approachable.</p>
+              <div class="brand__swatches"><i style="background:#111133"></i><i style="background:#F0A177"></i><i style="background:#C6ADD9"></i><i style="background:#A9C9E8"></i><i style="background:#F4EEE6"></i></div>
+              <a class="brand__dl" href="assets/logofolio/kroma-brandbook.pdf" download data-cursor="descargar"><span class="arrow">↓</span><span lang="es">Descargar brand book</span><span lang="en">Download brand book</span></a>
+            </div>
+          </div>
+          <div class="brand__mockups brand__mockups--4">
+            <div class="shot"><img src="assets/logofolio/kroma-web.png" alt="Kroma — web" /><span class="shot__cap" lang="es">Diseño web</span><span class="shot__cap" lang="en">Web design</span></div>
+            <div class="shot"><img src="assets/logofolio/kroma-botellas.png" alt="Kroma — packaging" /><span class="shot__cap" lang="es">Packaging</span><span class="shot__cap" lang="en">Packaging</span></div>
+            <div class="shot"><img src="assets/logofolio/kroma-edificio.png" alt="Kroma — cartelería" /><span class="shot__cap" lang="es">Cartelería</span><span class="shot__cap" lang="en">Signage</span></div>
+            <div class="shot"><img src="assets/logofolio/kroma-tote.png" alt="Kroma — merch" /><span class="shot__cap" lang="es">Merchandising</span><span class="shot__cap" lang="en">Merch</span></div>
+          </div>
+        </article>
+
+        <!-- ARRAY.GO -->
+        <article class="brand reveal" data-delay="1">
+          <div class="brand__top">
+            <div class="brand__logo" style="background:#111111"><span class="brand__orb" style="background:url('assets/logofolio/array-trama.png') center/120% no-repeat;opacity:.16"></span><img src="assets/logofolio/array-logo-rosa.png" alt="Array.Go" /></div>
+            <div class="brand__info">
+              <div class="brand__name-row"><h3 class="brand__name">Array<span style="color:#EE3388">.</span>Go</h3><span class="brand__tag">by Activum</span></div>
+              <span class="brand__scope" lang="es">identidad completa · papelería · merch</span><span class="brand__scope" lang="en">full identity · stationery · merch</span>
+              <p class="brand__desc" lang="es">Una marca creativa con carácter: rosa magenta y negro, tipografía condensada y una trama rítmica de barras. «Ideas que conectan, marcas que perduran.» Energía y contundencia.</p>
+              <p class="brand__desc" lang="en">A creative brand with attitude: magenta pink and black, condensed type and a rhythmic bar pattern. "Ideas that connect, brands that last." Energy and punch.</p>
+              <div class="brand__swatches"><i style="background:#EE3388"></i><i style="background:#111111"></i><i style="background:#F4A9C8"></i><i style="background:#F2EFEA"></i></div>
+              <a class="brand__dl" href="assets/logofolio/arraygo-brandbook.pdf" download data-cursor="descargar"><span class="arrow">↓</span><span lang="es">Descargar brand book</span><span lang="en">Download brand book</span></a>
+            </div>
+          </div>
+          <div class="brand__mockups brand__mockups--5">
+            <div class="shot"><img src="assets/logofolio/array-edificio.png" alt="Array.Go — cartelería" /><span class="shot__cap" lang="es">Cartelería exterior</span><span class="shot__cap" lang="en">Outdoor signage</span></div>
+            <div class="shot"><img src="assets/logofolio/array-papeleria.png" alt="Array.Go — papelería" /><span class="shot__cap" lang="es">Papelería</span><span class="shot__cap" lang="en">Stationery</span></div>
+            <div class="shot"><img src="assets/logofolio/array-web.png" alt="Array.Go — web" /><span class="shot__cap" lang="es">Web</span><span class="shot__cap" lang="en">Web</span></div>
+            <div class="shot"><img src="assets/logofolio/array-sudadera.png" alt="Array.Go — merch" /><span class="shot__cap" lang="es">Merch</span><span class="shot__cap" lang="en">Merch</span></div>
+            <div class="shot"><img src="assets/logofolio/array-coffee.png" alt="Array.Go — packaging" /><span class="shot__cap" lang="es">Packaging</span><span class="shot__cap" lang="en">Packaging</span></div>
+          </div>
+        </article>
+
+        <!-- HELIA -->
+        <article class="brand reveal" data-delay="2">
+          <div class="brand__top">
+            <div class="brand__logo" style="background:#F0E7CE"><img src="assets/logofolio/helia-logo.png" alt="Hëlia" /></div>
+            <div class="brand__info">
+              <div class="brand__name-row"><h3 class="brand__name">Hëlia</h3><span class="brand__tag">by Activum</span></div>
+              <span class="brand__scope" lang="es">logo · paleta · tipografía</span><span class="brand__scope" lang="en">logo · palette · type</span>
+              <p class="brand__desc" lang="es">Una base cálida y elegante. Wordmark serif con una diéresis que la hace única, en granate profundo sobre crema luminosa. El punto de partida sólido para crecer.</p>
+              <p class="brand__desc" lang="en">A warm, elegant base. A serif wordmark with a distinctive umlaut, in deep garnet over luminous cream. The solid starting point to grow from.</p>
+              <div class="brand__swatches"><i style="background:#662222"></i><i style="background:#F0E7CE"></i><i style="background:#C9A96A"></i><i style="background:#FBF8F0"></i></div>
+            </div>
+          </div>
+          <div class="brand__mockups brand__mockups--3 brand__mockups--marks">
+            <div class="shot shot--mark" style="background:#662222"><img src="assets/logofolio/helia-logo-claro.png" alt="Hëlia — versión clara" /><span class="shot__cap" lang="es">Logo invertido</span><span class="shot__cap" lang="en">Inverted logo</span></div>
+            <div class="shot shot--mark" style="background:#F0E7CE"><img src="assets/logofolio/helia-iso.png" alt="Hëlia — isotipo" /><span class="shot__cap" lang="es">Isotipo</span><span class="shot__cap" lang="en">Symbol</span></div>
+            <div class="shot shot--mark shot--type" style="background:#FBF8F0"><span class="type-spec"><b>Aa</b><em lang="es">tipografía Black Mango</em><em lang="en">Black Mango typeface</em></span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5 · ACTIVUM · MATERIAL COMERCIAL ===== -->
+  <section class="project section" id="p-activum" style="--accent:#8E2C42;--accent-soft:#F3DEE3;--accent-ink:#5A1C2C">
+    <div class="wrap">
+      <span class="project__index">05</span>
+      <div class="project__head">
+        <div class="mascot project__mascot project__mascot--l reveal mascot--talk" aria-hidden="true">
+          <img src="assets/mini-maria/mini-maria-principal.png" alt="Mini María" />
+          <span class="mascot-eyes mascot-eyes--l"></span>
+          <span class="mascot-eyes mascot-eyes--r"></span>
+        </div>
+        <div class="project__client"><span class="chip">Material comercial</span></div>
+        <h2 class="project__title reveal" lang="es">Activum <em>en papel</em></h2>
+        <h2 class="project__title reveal" lang="en">Activum <em>on paper</em></h2>
+        <div class="project__meta reveal" data-delay="1">
+          <span lang="es"><b>Rol:</b> Diseño gráfico integral</span>
+          <span lang="en"><b>Role:</b> Graphic design (full collateral)</span>
+          <span><b>2024–25</b></span>
+          <span lang="es"><b>Piezas:</b> dossieres · cartelería · newsletter</span>
+          <span lang="en"><b>Pieces:</b> dossiers · signage · newsletter</span>
+        </div>
+        <div class="project__tools reveal" data-delay="2"><span>Canva</span><span>Illustrator</span><span>InDesign</span><span>Claude</span></div>
+      </div>
+
+      <div class="reveal" data-parallax="12" style="margin-bottom:46px">
+        <div class="shot" style="border-radius:var(--r-xl);aspect-ratio:3/2;box-shadow:var(--shadow-lg)"><img src="assets/dossier/dossier-mockup.png" alt="Dossier General — Activum" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+      </div>
+
+      <div class="ppr">
+        <div class="ppr__block reveal"><div class="ppr__label"><span class="step">01</span><span lang="es">El reto</span><span lang="en">The challenge</span></div><h4 lang="es">Mucho material, una sola voz.</h4><h4 lang="en">Lots of material, one single voice.</h4><p lang="es">Activum necesitaba todo su material comercial con identidad unificada: dossieres de servicios, la cartelería de un evento corporativo y una newsletter interna.</p><p lang="en">Activum needed all its commercial material under one identity: service dossiers, signage for a corporate event, and an internal newsletter.</p></div>
+        <div class="ppr__block reveal" data-delay="1"><div class="ppr__label"><span class="step">02</span><span lang="es">El proceso</span><span lang="en">The process</span></div><h4 lang="es">Un sistema, muchos formatos.</h4><h4 lang="en">One system, many formats.</h4><p lang="es">Plantillas y piezas a medida con una rejilla común, para que todo se sienta de la misma marca.</p><p lang="en">Templates and bespoke pieces on a shared grid, so everything feels like one brand.</p><ul><li lang="es">Rejilla y jerarquía compartidas</li><li lang="en">Shared grid and hierarchy</li><li lang="es">Funciona impreso y en pantalla</li><li lang="en">Works in print and on screen</li><li lang="es">Claude para acelerar copy y estructura</li><li lang="en">Claude to speed up copy and structure</li></ul></div>
+        <div class="ppr__block reveal" data-delay="2"><div class="ppr__label"><span class="step">03</span><span lang="es">El resultado</span><span lang="en">The result</span></div><h4 lang="es">Un kit comercial coherente y reutilizable.</h4><h4 lang="en">A coherent, reusable commercial kit.</h4><p lang="es">El equipo dispone de piezas listas para usar y adaptar, sin perder coherencia.</p><p lang="en">The team has ready-to-use, adaptable pieces that never break consistency.</p></div>
+      </div>
+      <div class="metrics reveal">
+        <div class="metric"><span class="metric__num"><span class="count" data-count="10">10</span><em>+</em></span><span class="metric__label" lang="es">dossieres de servicios corporativos</span><span class="metric__label" lang="en">corporate service dossiers</span></div>
+        <div class="metric"><span class="metric__num"><span class="count" data-count="1">1</span></span><span class="metric__label" lang="es">evento corporativo señalizado</span><span class="metric__label" lang="en">corporate event, full signage</span></div>
+        <div class="metric"><span class="metric__num"><span class="count" data-count="1">1</span></span><span class="metric__label" lang="es">newsletter interna recurrente</span><span class="metric__label" lang="en">recurring internal newsletter</span></div>
+      </div>
+
+      <div class="landing-call reveal" style="margin-bottom:26px">
+        <div class="landing-call__text">
+          <span class="eyebrow eyebrow--accent"><span lang="es">newsletter · revista interna</span><span lang="en">newsletter · internal magazine</span></span>
+          <h4 lang="es">Activum Inside — la revista interna, en digital.</h4>
+          <h4 lang="en">Activum Inside — the internal magazine, digital.</h4>
+          <p lang="es">Diseño y maquetación de la newsletter interna de Activum: una revista navegable pensada para el equipo.</p>
+          <p lang="en">Design and layout of Activum's internal newsletter: a navigable magazine made for the team.</p>
+        </div>
+        <a class="btn-visit btn-visit--solid" href="https://activum-inside.vercel.app/" target="_blank" rel="noopener" data-cursor="abrir revista"><span lang="es">ver revista</span><span lang="en">view magazine</span><span class="btn-visit__arrow">↗</span></a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== 6 · REDES SOCIALES ===== -->
+  <section class="project section" id="p-rrss" style="--accent:#E97A56;--accent-soft:#FBE3D8;--accent-ink:#A04C30">
+    <div class="wrap">
+      <span class="project__index">06</span>
+      <div class="project__head">
+        <div class="mascot project__mascot project__mascot--r reveal mascot--talk" aria-hidden="true">
+          <img src="assets/mini-maria/mini-maria-invertido.png" alt="Mini María" />
+          <span class="mascot-eyes mascot-eyes--l" style="--lid:var(--mv-indigo)"></span>
+          <span class="mascot-eyes mascot-eyes--r" style="--lid:var(--mv-indigo)"></span>
+        </div>
+        <div class="project__client"><span class="chip">Redes sociales · Contenido</span></div>
+        <h2 class="project__title reveal" lang="es">Redes que se <em>reconocen</em></h2>
+        <h2 class="project__title reveal" lang="en">Social that <em>stands out</em></h2>
+        <div class="project__meta reveal" data-delay="1">
+          <span lang="es"><b>Rol:</b> Diseño y gestión de RRSS</span>
+          <span lang="en"><b>Role:</b> Social media design &amp; management</span>
+          <span><b>2024–25</b></span>
+          <span lang="es"><b>Cuentas:</b> @blink_malaga · @activum_</span>
+          <span lang="en"><b>Accounts:</b> @blink_malaga · @activum_</span>
+        </div>
+        <div class="project__tools reveal" data-delay="2"><span>Metricool</span><span>Canva</span><span>Illustrator</span></div>
+      </div>
+
+      <!-- Brand A · @blink_malaga -->
+      <div class="brand-panel reveal">
+        <div class="brand-panel__media" data-parallax="14">
+          <div class="frame-phone">
+            <div class="ig">
+              <div class="ig__bar"><span class="u">blink_malaga ▾</span><span class="dots">⋯</span></div>
+              <div class="ig__head">
+                <div class="ig__avatar"><img src="assets/rrss/blink-avatar.png" alt="B/Link Málaga" /></div>
+                <div class="ig__stats">
+                  <div class="ig__stat"><b>74</b><span lang="es">posts</span><span lang="en">posts</span></div>
+                  <div class="ig__stat"><b>160</b><span lang="es">seguidores</span><span lang="en">followers</span></div>
+                  <div class="ig__stat"><b>98</b><span lang="es">seguidos</span><span lang="en">following</span></div>
+                </div>
+              </div>
+              <div class="ig__bio"><span class="nm">B/Link Málaga</span><br><span style="color:#8e8e8e">Sector inmobiliario</span><br><span>EASY. LIVING. MÁLAGA — en el corazón de Málaga TechPark. Alojamientos diseñados para tu estilo de vida.</span><br><span class="web">www.blinkmalaga.com</span></div>
+              <div class="ig__hl"><span class="hl"><i style="background:#0B3D24"></i><em>FlexLiving</em></span><span class="hl"><i style="background:#E4FF1A"></i><em>Eventos</em></span><span class="hl"><i style="background:#EFE7D6"></i><em>Espacios</em></span><span class="hl"><i style="background:#EFE7D6"></i><em>FAQs</em></span><span class="hl"><i style="background:#C0286A"></i><em>Málaga</em></span></div>
+              <div class="ig__tabs"><i>▦</i><i>▷</i><i>♡</i></div>
+              <div class="ig__grid">
+                <span class="ig__cell"><img src="assets/rrss/blink-1.png" alt="post" /></span><span class="ig__cell"><img src="assets/rrss/blink-2.png" alt="post" /></span><span class="ig__cell"><img src="assets/rrss/blink-3.png" alt="post" /></span>
+                <span class="ig__cell"><img src="assets/rrss/blink-4.png" alt="post" /></span><span class="ig__cell"><img src="assets/rrss/blink-5.png" alt="post" /></span><span class="ig__cell"><img src="assets/rrss/blink-6.png" alt="post" /></span>
+                <span class="ig__cell"><img src="assets/rrss/blink-7.png" alt="post" /></span><span class="ig__cell"><img src="assets/rrss/blink-8.png" alt="post" /></span><span class="ig__cell"><img src="assets/rrss/blink-9.png" alt="post" /></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="brand-panel__content">
+          <h3 class="brand-panel__name">@blink_<em>malaga</em></h3>
+          <div class="brand-chips"><span>Instagram</span><span lang="es">Diseño + gestión</span><span lang="en">Design + management</span></div>
+          <dl class="brand-dl">
+            <div><dt lang="es">El reto</dt><dt lang="en">The challenge</dt><dd lang="es">Dar a B/Link una presencia constante y muy reconocible en Instagram, con una línea propia que destacara en el feed.</dd><dd lang="en">Give B/Link a constant, highly recognisable Instagram presence, with a visual line that stands out in the feed.</dd></div>
+            <div><dt lang="es">El proceso</dt><dt lang="en">The process</dt><dd lang="es">Sistema de plantillas, calendario de contenidos y publicación gestionada con Metricool, midiendo qué funciona.</dd><dd lang="en">A template system, content calendar and publishing managed with Metricool, measuring what works.</dd></div>
+            <div><dt lang="es">El resultado</dt><dt lang="en">The result</dt><dd lang="es">Un feed coherente de un vistazo y una comunidad que crece de forma sostenida.</dd><dd lang="en">A feed that's coherent at a glance and a steadily growing community.</dd></div>
+          </dl>
+          <div class="brand-metrics">
+            <div class="metric"><span class="metric__num"><span class="count" data-count="160">160</span></span><span class="metric__label" lang="es">seguidores en Instagram</span><span class="metric__label" lang="en">Instagram followers</span></div>
+            <div class="metric"><span class="metric__num"><span class="count" data-count="10">10</span><em>/mes</em></span><span class="metric__label" lang="es">publicaciones de media</span><span class="metric__label" lang="en">avg. posts per month</span></div>
+            <div class="metric"><span class="metric__num">54,2<em>%</em></span><span class="metric__label" lang="es">engagement (Metricool) · +6,36% el último mes</span><span class="metric__label" lang="en">engagement (Metricool) · +6.36% last month</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brand B · @activum -->
+      <div class="brand-panel brand-panel--rev reveal">
+        <div class="brand-panel__content">
+          <h3 class="brand-panel__name">@<em>activum_</em></h3>
+          <div class="brand-chips"><span>Instagram</span><span>LinkedIn</span><span lang="es">Diseño + gestión</span><span lang="en">Design + management</span></div>
+          <dl class="brand-dl">
+            <div><dt lang="es">El reto</dt><dt lang="en">The challenge</dt><dd lang="es">Una misma marca en dos canales con tonos distintos: cercano en Instagram, profesional y corporativo en LinkedIn.</dd><dd lang="en">One brand across two channels with different tones: warm on Instagram, professional and corporate on LinkedIn.</dd></div>
+            <div><dt lang="es">El proceso</dt><dt lang="en">The process</dt><dd lang="es">Línea gráfica adaptada a cada red, calendario conjunto y piezas pensadas para informar y generar confianza.</dd><dd lang="en">A visual line adapted to each network, a joint calendar, and pieces designed to inform and build trust.</dd></div>
+            <div><dt lang="es">El resultado</dt><dt lang="en">The result</dt><dd lang="es">Presencia profesional y coherente en los dos canales, alineada con el negocio.</dd><dd lang="en">A professional, coherent presence on both channels, aligned with the business.</dd></div>
+          </dl>
+          <div class="brand-metrics">
+            <div class="metric"><span class="metric__num"><span class="count" data-count="2">2</span></span><span class="metric__label" lang="es">canales: Instagram + LinkedIn</span><span class="metric__label" lang="en">channels: Instagram + LinkedIn</span></div>
+            <div class="metric"><span class="metric__num"><span class="count" data-count="300">300</span><em>+</em></span><span class="metric__label" lang="es">visualizaciones en LinkedIn corporativo</span><span class="metric__label" lang="en">views on corporate LinkedIn</span></div>
+          </div>
+        </div>
+        <div class="brand-panel__media" data-parallax="14">
+          <div class="frame-phone">
+            <div class="ig">
+              <div class="ig__bar"><span class="u">activum_ ▾</span><span class="dots">⋯</span></div>
+              <div class="ig__head">
+                <div class="ig__avatar"><img src="assets/rrss/activum-avatar.png" alt="Activum" /></div>
+                <div class="ig__stats">
+                  <div class="ig__stat"><b>275</b><span lang="es">posts</span><span lang="en">posts</span></div>
+                  <div class="ig__stat"><b>1.659</b><span lang="es">seguidores</span><span lang="en">followers</span></div>
+                  <div class="ig__stat"><b>271</b><span lang="es">seguidos</span><span lang="en">following</span></div>
+                </div>
+              </div>
+              <div class="ig__bio"><span class="nm">ACTIVUM</span><br><span style="color:#8e8e8e">Sector inmobiliario</span><br><span>Empresa de servicios inmobiliarios especializada en Build to Sell (BTS), Build to Rent (BTR) y Living, con más de 30 años de experiencia.</span><br><span class="web">linktr.ee/activum</span></div>
+              <div class="ig__hl"><span class="hl"><i style="background:#2b2b2b"></i><em>Podcast</em></span><span class="hl"><i style="background:#2b2b2b"></i><em>Noticias</em></span><span class="hl"><i style="background:#2b2b2b"></i><em>Blog</em></span><span class="hl"><i style="background:#2b2b2b"></i><em>Proyectos</em></span></div>
+              <div class="ig__tabs"><i>▦</i><i>▷</i><i>♡</i></div>
+              <div class="ig__grid">
+                <span class="ig__cell"><img src="assets/rrss/activum-1.png" alt="post" style="object-position:0% 15%; transform:scale(1.25); transform-origin:left center" /></span><span class="ig__cell"><img src="assets/rrss/activum-2.png" alt="post" /></span><span class="ig__cell"><img src="assets/rrss/activum-3.png" alt="post" /></span>
+                <span class="ig__cell"><img src="assets/rrss/activum-4.png" alt="post" style="object-position:50% 0%" /></span><span class="ig__cell"><img src="assets/rrss/activum-5.png" alt="post" style="object-position:50% 0%" /></span><span class="ig__cell"><img src="assets/rrss/activum-6.png" alt="post" style="object-position:50% 0%" /></span>
+                <span class="ig__cell"><img src="assets/rrss/activum-7.png" alt="post" style="object-position:50% 100%" /></span><span class="ig__cell"><img src="assets/rrss/activum-8.png" alt="post" style="object-position:50% 100%" /></span><span class="ig__cell"><img src="assets/rrss/activum-9.png" alt="post" style="object-position:50% 100%" /></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+
+  <!-- ============================ CONTACT ============================ -->
+  <section class="section" id="contact">
+    <div class="wrap" style="padding-inline:0">
+      <div class="contact wrap" style="max-width:1180px">
+        <div class="contact__pattern" aria-hidden="true"></div>
+        <div class="mascot contact__mascot mascot--talk" aria-hidden="true">
+          <img src="assets/mini-maria/mini-maria-naranja.png" alt="" />
+          <span class="mascot-eyes mascot-eyes--l" style="--lid:var(--mv-sand)"></span>
+          <span class="mascot-eyes mascot-eyes--r" style="--lid:var(--mv-sand)"></span>
+        </div>
+        <div class="contact__inner">
+          <span class="eyebrow reveal"><span lang="es">¿trabajamos juntas?</span><span lang="en">shall we work together?</span></span>
+          <h2 class="contact__title reveal" data-delay="1" lang="es">Cuéntame tu <em>proyecto</em>.</h2>
+          <h2 class="contact__title reveal" data-delay="1" lang="en">Tell me about your <em>project</em>.</h2>
+          <p class="contact__body reveal" data-delay="2" lang="es">Si tienes una marca que cuidar, una web que estrenar o unas redes que ordenar, escríbeme. Me encanta empezar conversaciones nuevas — sin prisa, con café.</p>
+          <p class="contact__body reveal" data-delay="2" lang="en">If you've got a brand to nurture, a website to launch or social media to sort out, write to me. I love starting new conversations — no rush, with coffee.</p>
+          <div class="contact__actions reveal" data-delay="3">
+            <a class="btn btn--coral" href="mailto:maria.vsanchez00@gmail.com" data-cursor="escríbeme"><span lang="es">escríbeme</span><span lang="en">say hello</span></a>
+            <a class="btn btn--ghost-light" href="assets/Maria-Valle-CV.pdf" download data-cursor="descargar"><span lang="es">descargar CV</span><span lang="en">download CV</span></a>
+          </div>
+          <div class="contact__social reveal" data-delay="4">
+            <a href="https://linkedin.com/in/maria-valle-sanchez" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://behance.net/mariavallesanchez" target="_blank" rel="noopener">Behance</a>
+            <a href="mailto:maria.vsanchez00@gmail.com">maria.vsanchez00@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <img src="assets/logos/logo-principal.png" alt="María Valle" />
+    <small lang="es">© 2026 María Valle · diseñado con calma en Málaga 🤍</small>
+    <small lang="en">© 2026 María Valle · designed slowly in Málaga 🤍</small>
+  </footer>
+
+</main>
+
+<button class="to-top" aria-label="Subir arriba" data-cursor="arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+</button>
+
+<script src="portfolio.js"></script>
+<script>
+/* tools marquee builder — real app icons (duplicated track for seamless loop) */
+(function () {
+  // type 'mark' = authentic colored tile w/ letters (Adobe/MS real icon style)
+  // type 'cdn'  = brand glyph from Simple Icons CDN on its real brand colour
+  var tools = [
+    { n: "Illustrator", type: "mark", bg: "#1A0A00", fg: "#FF9A00", mk: "Ai" },
+    { n: "Photoshop",   type: "mark", bg: "#001E36", fg: "#31A8FF", mk: "Ps" },
+    { n: "InDesign",    type: "mark", bg: "#49021F", fg: "#FF3366", mk: "Id" },
+    { n: "PowerPoint",  type: "mark", bg: "#C43E1C", fg: "#FFFFFF", mk: "P" },
+    { n: "Word",        type: "mark", bg: "#2B579A", fg: "#FFFFFF", mk: "W" },
+    { n: "Figma",       type: "cdn",  bg: "#1E1E1E", slug: "figma",     col: "white" },
+    { n: "Canva",       type: "mark", bg: "#00C4CC", fg: "#FFFFFF", mk: "C" },
+    { n: "WordPress",   type: "cdn",  bg: "#21759B", slug: "wordpress", col: "white" },
+    { n: "Lovable",     type: "mark", bg: "#FF4F87", fg: "#FFFFFF", mk: "L" },
+    { n: "Claude",      type: "cdn",  bg: "#D97757", slug: "claude",    col: "white", mk: "C" },
+    { n: "Metricool",   type: "mark", bg: "#1B2A4A", fg: "#FFFFFF", mk: "M" },
+    { n: "Mailchimp",   type: "cdn",  bg: "#FFE01B", slug: "mailchimp", col: "black", mk: "M" },
+    { n: "GitHub",      type: "cdn",  bg: "#181717", slug: "github",    col: "white" },
+    { n: "Vercel",      type: "cdn",  bg: "#000000", slug: "vercel",    col: "white" }
+  ];
+  var track = document.getElementById("tools-track");
+  if (!track) return;
+  function tile(t) {
+    var ico;
+    if (t.type === "mark") {
+      ico = '<span class="tool-ico" style="background:' + t.bg + '"><em style="color:' + t.fg + '">' + t.mk + '</em></span>';
+    } else {
+      var fallback = '<em style="color:' + (t.col === "black" ? "#1a1a1a" : "#fff") + '">' + (t.mk || t.n[0]) + '</em>';
+      ico = '<span class="tool-ico" style="background:' + t.bg + '">'
+          + '<img src="https://cdn.simpleicons.org/' + t.slug + '/' + t.col + '" alt="" '
+          + 'onload="this.nextElementSibling.style.display=\'none\'" '
+          + 'onerror="this.style.display=\'none\'">'
+          + fallback + '</span>';
+    }
+    return '<span class="tool-pill">' + ico + t.n + '</span>';
+  }
+  var html = "";
+  for (var rep = 0; rep < 2; rep++) tools.forEach(function (t) { html += tile(t); });
+  track.innerHTML = html;
+})();
+</script>
+
+</body>
+</html>
