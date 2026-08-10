@@ -362,7 +362,7 @@
         <div class="project__tools reveal" data-delay="2"><span>Illustrator</span><span>InDesign</span><span>Canva</span></div>
       </div>
 
-      <div class="ppr" style="grid-template-columns:1fr 1fr">
+      <div class="ppr ppr--2col">
         <div class="ppr__block reveal"><div class="ppr__label"><span class="step">01</span><span lang="es">El reto</span><span lang="en">The challenge</span></div><h4 lang="es">Tres marcas, tres personalidades.</h4><h4 lang="en">Three brands, three personalities.</h4><p lang="es">Cada una pedía un lenguaje propio: Kroma Living y Array.Go con identidad completa; Hëlia, una base sólida de logo, paleta y tipografía.</p><p lang="en">Each needed its own language: full identities for Kroma Living and Array.Go; for Hëlia, a solid base of logo, palette and type.</p></div>
         <div class="ppr__block reveal" data-delay="1"><div class="ppr__label"><span class="step">02</span><span lang="es">El proceso</span><span lang="en">The process</span></div><h4 lang="es">Del concepto al símbolo.</h4><h4 lang="en">From concept to symbol.</h4><p lang="es">Investigación, bocetos a mano, vectorización y construcción del sistema. Cada decisión —el color, la forma, la tipografía— responde a lo que la marca quiere transmitir.</p><p lang="en">Research, hand sketches, vectorisation and system-building. Every decision —colour, form, type— answers what the brand wants to say.</p></div>
       </div>
@@ -642,38 +642,27 @@
 <script>
 /* tools marquee builder — real app icons (duplicated track for seamless loop) */
 (function () {
-  // type 'mark' = authentic colored tile w/ letters (Adobe/MS real icon style)
-  // type 'cdn'  = brand glyph from Simple Icons CDN on its real brand colour
+  // authentic colored tile w/ letters (Adobe/MS real icon style) — all local, no external requests
   var tools = [
-    { n: "Illustrator", type: "mark", bg: "#1A0A00", fg: "#FF9A00", mk: "Ai" },
-    { n: "Photoshop",   type: "mark", bg: "#001E36", fg: "#31A8FF", mk: "Ps" },
-    { n: "InDesign",    type: "mark", bg: "#49021F", fg: "#FF3366", mk: "Id" },
-    { n: "PowerPoint",  type: "mark", bg: "#C43E1C", fg: "#FFFFFF", mk: "P" },
-    { n: "Word",        type: "mark", bg: "#2B579A", fg: "#FFFFFF", mk: "W" },
-    { n: "Figma",       type: "cdn",  bg: "#1E1E1E", slug: "figma",     col: "white" },
-    { n: "Canva",       type: "mark", bg: "#00C4CC", fg: "#FFFFFF", mk: "C" },
-    { n: "WordPress",   type: "cdn",  bg: "#21759B", slug: "wordpress", col: "white" },
-    { n: "Lovable",     type: "mark", bg: "#FF4F87", fg: "#FFFFFF", mk: "L" },
-    { n: "Claude",      type: "cdn",  bg: "#D97757", slug: "claude",    col: "white", mk: "C" },
-    { n: "Metricool",   type: "mark", bg: "#1B2A4A", fg: "#FFFFFF", mk: "M" },
-    { n: "Mailchimp",   type: "cdn",  bg: "#FFE01B", slug: "mailchimp", col: "black", mk: "M" },
-    { n: "GitHub",      type: "cdn",  bg: "#181717", slug: "github",    col: "white" },
-    { n: "Vercel",      type: "cdn",  bg: "#000000", slug: "vercel",    col: "white" }
+    { n: "Illustrator", bg: "#1A0A00", fg: "#FF9A00", mk: "Ai" },
+    { n: "Photoshop",   bg: "#001E36", fg: "#31A8FF", mk: "Ps" },
+    { n: "InDesign",    bg: "#49021F", fg: "#FF3366", mk: "Id" },
+    { n: "PowerPoint",  bg: "#C43E1C", fg: "#FFFFFF", mk: "P" },
+    { n: "Word",        bg: "#2B579A", fg: "#FFFFFF", mk: "W" },
+    { n: "Figma",       bg: "#1E1E1E", fg: "#FFFFFF", mk: "Fi" },
+    { n: "Canva",       bg: "#00C4CC", fg: "#FFFFFF", mk: "C" },
+    { n: "WordPress",   bg: "#21759B", fg: "#FFFFFF", mk: "W" },
+    { n: "Lovable",     bg: "#FF4F87", fg: "#FFFFFF", mk: "L" },
+    { n: "Claude",      bg: "#D97757", fg: "#FFFFFF", mk: "Cl" },
+    { n: "Metricool",   bg: "#1B2A4A", fg: "#FFFFFF", mk: "M" },
+    { n: "Mailchimp",   bg: "#FFE01B", fg: "#1A1A1A", mk: "Mc" },
+    { n: "GitHub",      bg: "#181717", fg: "#FFFFFF", mk: "Gh" },
+    { n: "Vercel",      bg: "#000000", fg: "#FFFFFF", mk: "▲" }
   ];
   var track = document.getElementById("tools-track");
   if (!track) return;
   function tile(t) {
-    var ico;
-    if (t.type === "mark") {
-      ico = '<span class="tool-ico" style="background:' + t.bg + '"><em style="color:' + t.fg + '">' + t.mk + '</em></span>';
-    } else {
-      var fallback = '<em style="color:' + (t.col === "black" ? "#1a1a1a" : "#fff") + '">' + (t.mk || t.n[0]) + '</em>';
-      ico = '<span class="tool-ico" style="background:' + t.bg + '">'
-          + '<img src="https://cdn.simpleicons.org/' + t.slug + '/' + t.col + '" alt="" '
-          + 'onload="this.nextElementSibling.style.display=\'none\'" '
-          + 'onerror="this.style.display=\'none\'">'
-          + fallback + '</span>';
-    }
+    var ico = '<span class="tool-ico" style="background:' + t.bg + '"><em style="color:' + t.fg + '">' + t.mk + '</em></span>';
     return '<span class="tool-pill">' + ico + t.n + '</span>';
   }
   var html = "";
