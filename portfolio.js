@@ -32,6 +32,7 @@
     safe("counters", initCounters);
     safe("heroPattern", initHeroPattern);
     safe("toTop", initToTop);
+    safe("lightbox", initLightbox);
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
@@ -259,5 +260,39 @@
       window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
     });
     onScroll();
+  }
+
+  /* ---------- image lightbox (click a .js-zoom image to view full-screen) ---------- */
+  function initLightbox() {
+    const imgs = Array.from(document.querySelectorAll(".js-zoom"));
+    const box = document.getElementById("lightbox");
+    if (!imgs.length || !box) return;
+    const boxImg = box.querySelector(".lightbox__img");
+    const closeBtn = box.querySelector(".lightbox__close");
+    let lastFocus = null;
+    function open(img) {
+      lastFocus = document.activeElement;
+      boxImg.src = img.currentSrc || img.src;
+      boxImg.alt = img.alt || "";
+      box.classList.add("is-open");
+      box.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+    function close() {
+      box.classList.remove("is-open");
+      box.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      boxImg.src = "";
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    imgs.forEach((img) => {
+      img.addEventListener("click", () => open(img));
+    });
+    closeBtn.addEventListener("click", close);
+    box.addEventListener("click", (e) => { if (e.target === box) close(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && box.classList.contains("is-open")) close();
+    });
   }
 })();
