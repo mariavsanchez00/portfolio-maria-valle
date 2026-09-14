@@ -608,6 +608,12 @@ body.cursor-talk .cursor__label {
 .brand__tag { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--mv-lavender); }
 .brand__scope { font-size: 12.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--accent, var(--mv-lavender)); margin-bottom: 14px; }
 .brand__desc { font-size: 15px; color: var(--mv-shadow); line-height: 1.6; margin: 0 0 18px; max-width: 44ch; }
+.brand--confidential { background: var(--bg-tint); }
+.brand__confidential { padding: clamp(40px,6vw,64px) clamp(24px,5vw,48px); display: flex; flex-direction: column; align-items: center; text-align: center; }
+.brand__confidential .brand__name-row { justify-content: center; }
+.brand__confidential .brand__desc { margin: 0 auto; }
+.brand__confidential-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: var(--bg-surface); border: 1px solid var(--border-soft); color: var(--mv-lavender); margin-bottom: 18px; }
+.brand__confidential-icon svg { width: 18px; height: 18px; }
 .brand__swatches { display: flex; gap: 8px; }
 .brand__swatches i { width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(0,0,0,.08); }
 .brand__dl { display: inline-flex; align-items: center; gap: 9px; margin-top: 20px; padding: 11px 20px; border-radius: var(--r-pill); background: var(--mv-indigo); color: var(--mv-paper); font-size: 13.5px; font-weight: 600; letter-spacing: .01em; text-decoration: none; align-self: flex-start; transition: transform var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out); }
