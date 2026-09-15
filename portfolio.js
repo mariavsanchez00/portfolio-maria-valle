@@ -59,7 +59,7 @@
       requestAnimationFrame(loop);
     }
     loop();
-    const hoverSel = "a, button, [data-cursor], .shot, .svc, .logo-card, .tool-pill";
+    const hoverSel = "a, button, [data-cursor], .shot, .svc:not(.svc--locked), .logo-card, .tool-pill";
     document.querySelectorAll(hoverSel).forEach((el) => {
       el.addEventListener("mouseenter", () => {
         document.body.classList.add("cursor-hover");
