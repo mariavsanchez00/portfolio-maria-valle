@@ -27,7 +27,7 @@ body[data-lang="en"] [lang="es"] { display: none !important; }
 /* ============================================================
    CUSTOM CURSOR
    ============================================================ */
-.cursor { position: fixed; top: 0; left: 0; z-index: 9000; pointer-events: none; }
+.cursor { position: fixed; top: 0; left: 0; z-index: 9600; pointer-events: none; }
 .cursor__ring {
   position: fixed; top: 0; left: 0;
   width: 36px; height: 36px; margin: -18px 0 0 -18px;
