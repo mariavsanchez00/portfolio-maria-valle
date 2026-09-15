@@ -556,6 +556,25 @@ body.cursor-talk .cursor__label {
 .gallery--scroll::-webkit-scrollbar { display: none; }
 .gallery--scroll .shot { scroll-snap-align: start; }
 
+/* directional arrow button for .gallery--scroll — sits on whichever edge
+   still has content, flips side + points the other way at the far end */
+.gallery-wrap { position: relative; }
+.gallery-scroll-btn {
+  position: absolute; top: 50%; right: 6px; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--mv-indigo); color: var(--mv-paper);
+  border: none; box-shadow: var(--shadow-md); cursor: pointer; z-index: 2;
+  opacity: 0; pointer-events: none; transition: opacity var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
+}
+.gallery-scroll-btn.is-visible { opacity: 1; pointer-events: auto; }
+.gallery-scroll-btn:hover { background: var(--mv-coral); }
+.gallery-scroll-btn:active { transform: translateY(-50%) scale(.92); }
+.gallery-scroll-btn svg { width: 18px; height: 18px; }
+.gallery-scroll-btn--start { left: 6px; right: auto; }
+.gallery-scroll-btn--start svg { transform: scaleX(-1); }
+@media (max-width: 640px) { .gallery-scroll-btn { display: none; } }
+
 /* device frames */
 .frame-browser { border-radius: 14px 14px var(--r-lg) var(--r-lg); overflow: hidden; border: 1px solid var(--border-default); background: var(--mv-white); box-shadow: var(--shadow-md); }
 .frame-browser__bar { display: flex; align-items: center; gap: 8px; padding: 11px 14px; background: var(--bg-sunken); border-bottom: 1px solid var(--border-soft); }

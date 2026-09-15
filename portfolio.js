@@ -64,6 +64,7 @@
     safe("heroPattern", initHeroPattern);
     safe("toTop", initToTop);
     safe("lightbox", initLightbox);
+    safe("galleryScrollBtn", initGalleryScrollBtns);
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
@@ -291,6 +292,32 @@
       window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
     });
     onScroll();
+  }
+
+  /* ---------- directional arrow for horizontal-scroll galleries ---------- */
+  function initGalleryScrollBtns() {
+    document.querySelectorAll(".gallery-scroll-btn").forEach((btn) => {
+      const track = document.getElementById(btn.dataset.target);
+      if (!track) return;
+      const EDGE = 4; // px tolerance for "at the end" / "not scrollable"
+
+      function update() {
+        const scrollable = track.scrollWidth - track.clientWidth > EDGE;
+        if (!scrollable) { btn.classList.remove("is-visible"); return; }
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - EDGE;
+        btn.classList.add("is-visible");
+        btn.classList.toggle("gallery-scroll-btn--start", atEnd);
+        btn.setAttribute("aria-label", atEnd ? "Volver al principio" : "Ver más");
+      }
+      track.addEventListener("scroll", update, { passive: true });
+      window.addEventListener("resize", update);
+      btn.addEventListener("click", () => {
+        const atEnd = btn.classList.contains("gallery-scroll-btn--start");
+        const amount = track.clientWidth * 0.8 * (atEnd ? -1 : 1);
+        track.scrollBy({ left: amount, behavior: prefersReduced ? "auto" : "smooth" });
+      });
+      update();
+    });
   }
 
   /* ---------- image lightbox (click a .js-zoom image to view full-screen) ---------- */
