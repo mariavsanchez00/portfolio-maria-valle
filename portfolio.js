@@ -7,6 +7,20 @@
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- language switch ---------- */
+  var HEAD_COPY = {
+    es: {
+      title: "María Valle — Diseñadora gráfica y digital en Málaga | Portfolio",
+      description: "María Valle, diseñadora gráfica y digital en Málaga. Identidad de marca, redes sociales, contenido y experiencias web con calma y criterio. Descubre mi portfolio.",
+      ogTitle: "María Valle — Diseñadora gráfica y digital en Málaga",
+      ogDescription: "Identidad de marca, redes sociales, contenido y experiencias web con calma y criterio. Descubre mi portfolio."
+    },
+    en: {
+      title: "María Valle — Graphic & Digital Designer in Málaga | Portfolio",
+      description: "María Valle, graphic & digital designer based in Málaga. Brand identity, social media, content and web experiences designed with calm and intention. See my portfolio.",
+      ogTitle: "María Valle — Graphic & Digital Designer in Málaga",
+      ogDescription: "Brand identity, social media, content and web experiences designed with calm and intention. See my portfolio."
+    }
+  };
   function setLang(lang) {
     document.body.dataset.lang = lang;
     try { localStorage.setItem("mv-lang", lang); } catch (e) {}
@@ -14,6 +28,23 @@
       b.classList.toggle("is-active", b.dataset.lang === lang);
     });
     document.documentElement.setAttribute("lang", lang);
+    // Keep the tab title + meta description in step with the visible language.
+    // Note: this only affects real visitors — share-preview bots (LinkedIn,
+    // Facebook, Twitter) read the static <head> tags without running JS, so
+    // those stay in Spanish (the site's default language) by design.
+    var c = HEAD_COPY[lang] || HEAD_COPY.es;
+    var titleEl = document.getElementById("page-title");
+    if (titleEl) { titleEl.textContent = c.title; document.title = c.title; }
+    var descEl = document.getElementById("page-description");
+    if (descEl) descEl.setAttribute("content", c.description);
+    var ogTitleEl = document.getElementById("og-title");
+    if (ogTitleEl) ogTitleEl.setAttribute("content", c.ogTitle);
+    var ogDescEl = document.getElementById("og-description");
+    if (ogDescEl) ogDescEl.setAttribute("content", c.ogDescription);
+    var twTitleEl = document.getElementById("twitter-title");
+    if (twTitleEl) twTitleEl.setAttribute("content", c.ogTitle);
+    var twDescEl = document.getElementById("twitter-description");
+    if (twDescEl) twDescEl.setAttribute("content", c.ogDescription);
   }
   let savedLang = "es";
   try { savedLang = localStorage.getItem("mv-lang") || "es"; } catch (e) {}
