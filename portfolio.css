@@ -548,6 +548,14 @@ body.cursor-talk .cursor__label {
 }
 .shot:hover .shot__cap { opacity: 1; transform: none; }
 
+/* horizontal-scroll gallery row — no visible scrollbar, gentle snap */
+.gallery--scroll {
+  display: flex; gap: 16px; overflow-x: auto; padding: 2px 2px 4px;
+  scroll-snap-type: x proximity; scrollbar-width: none; -ms-overflow-style: none;
+}
+.gallery--scroll::-webkit-scrollbar { display: none; }
+.gallery--scroll .shot { scroll-snap-align: start; }
+
 /* device frames */
 .frame-browser { border-radius: 14px 14px var(--r-lg) var(--r-lg); overflow: hidden; border: 1px solid var(--border-default); background: var(--mv-white); box-shadow: var(--shadow-md); }
 .frame-browser__bar { display: flex; align-items: center; gap: 8px; padding: 11px 14px; background: var(--bg-sunken); border-bottom: 1px solid var(--border-soft); }
