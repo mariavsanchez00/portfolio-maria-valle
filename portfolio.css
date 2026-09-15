@@ -340,16 +340,6 @@ body.cursor-talk .cursor__label {
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
 }
 .svc:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: color-mix(in oklab, var(--mv-coral) 35%, var(--border-soft)); }
-/* translucent project photo revealed on hover (set via --svc-photo in JS) */
-.svc__photo {
-  position: absolute; inset: 0; z-index: 0;
-  background-image: var(--svc-photo, none);
-  background-size: cover; background-position: center;
-  opacity: 0; transform: scale(1.06);
-  transition: opacity var(--dur-slow) var(--ease-out), transform 1.4s var(--ease-out);
-  pointer-events: none;
-}
-.svc:hover .svc__photo { opacity: .16; transform: scale(1); }
 .svc__num, .svc h3, .svc p, .svc__dot, .svc__go, .svc__metric, .svc__tags { position: relative; z-index: 1; }
 .svc__tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 2px; }
 .svc__tag { font-size: 11px; font-weight: 600; letter-spacing: .02em; color: var(--mv-shadow); border: 1px solid var(--border-default); border-radius: var(--r-pill); padding: 4px 10px; }
