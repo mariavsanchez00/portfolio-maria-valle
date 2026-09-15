@@ -355,7 +355,7 @@ body.cursor-talk .cursor__label {
 .svc__tag { font-size: 11px; font-weight: 600; letter-spacing: .02em; color: var(--mv-shadow); border: 1px solid var(--border-default); border-radius: var(--r-pill); padding: 4px 10px; }
 .svc__metric { display: flex; align-items: baseline; gap: 8px; margin-top: 14px; }
 .svc__metric-num { font-family: var(--font-display); font-weight: 600; font-size: 26px; line-height: 1; color: var(--mv-indigo); }
-.svc__metric-label { font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--mv-shadow); opacity: .75; }
+.svc__metric-label { font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--mv-shadow); }
 .svc__num { font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--mv-lavender); }
 .svc h3 { font-family: var(--font-display); font-size: 23px; font-weight: 600; margin: 14px 0 10px; color: var(--mv-indigo); }
 .svc p {
@@ -379,7 +379,7 @@ body.cursor-talk .cursor__label {
 .svc--locked:hover .svc__dot { transform: none; opacity: .55; }
 .svc__lock { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--bg-surface); border: 1px solid var(--border-soft); color: var(--mv-lavender); margin-bottom: 14px; }
 .svc__lock svg { width: 15px; height: 15px; }
-.svc__chip { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: var(--mv-lilac-tint); color: var(--mv-indigo); padding: 6px 13px; border-radius: var(--r-pill); margin: 0 0 10px; }
+.svc__chip { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: var(--bg-surface); color: var(--mv-indigo); padding: 6px 13px; border-radius: var(--r-pill); margin: 0 0 10px; }
 
 /* ============================================================
    TOOLS marquee
