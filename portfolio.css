@@ -590,18 +590,22 @@ a.campaign-row:hover .campaign-row__photo { opacity: .16; transform: scale(1); }
    FOLDER SPILL — creatives fanned out of a folder, like icons
    spilling from behind a head on hover (trevornoah.com-style)
    ============================================================ */
-.folder-spill { position: relative; margin: 0 auto; max-width: 760px; }
+.folder-spill { position: relative; margin: 0 auto; max-width: 900px; }
 .folder-spill__stage {
-  --step: clamp(44px, 8.6vw, 70px);
+  --step: clamp(56px, 11vw, 92px);
   position: relative; display: flex; justify-content: center; align-items: flex-end;
-  min-height: clamp(230px, 34vw, 300px);
-  padding-bottom: clamp(60px, 11vw, 90px);
+  min-height: clamp(300px, 44vw, 400px);
+  padding-bottom: clamp(50px, 9vw, 76px);
 }
-.folder-spill__folder { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: clamp(180px, 32vw, 250px); z-index: 0; pointer-events: none; }
-.folder-spill__folder svg { display: block; width: 100%; height: auto; filter: drop-shadow(0 10px 16px rgba(26,21,53,.14)); }
+.folder-spill__folder, .folder-spill__folder-front { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: clamp(240px, 44vw, 360px); pointer-events: none; }
+.folder-spill__folder { z-index: 0; }
+.folder-spill__folder svg, .folder-spill__folder-front svg { display: block; width: 100%; height: auto; }
+.folder-spill__folder svg { filter: drop-shadow(0 10px 16px rgba(26,21,53,.14)); }
+.folder-spill__folder-front { z-index: 10; }
+.folder-spill__folder-front svg { filter: drop-shadow(0 6px 10px rgba(26,21,53,.14)); }
 .folder-spill__item {
-  position: absolute; left: 50%; bottom: clamp(46px, 7.6vw, 70px);
-  width: clamp(92px, 15vw, 140px); height: clamp(120px, 20vw, 182px);
+  position: absolute; left: 50%; bottom: clamp(30px, 6vw, 56px);
+  width: clamp(118px, 19vw, 184px); height: clamp(152px, 25vw, 238px);
   border-radius: var(--r-lg); overflow: hidden;
   border: 4px solid var(--bg-surface); box-shadow: var(--shadow-sm);
   background: var(--bg-sunken); cursor: zoom-in;
@@ -611,7 +615,7 @@ a.campaign-row:hover .campaign-row__photo { opacity: .16; transform: scale(1); }
 }
 .folder-spill__item img, .folder-spill__item video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .folder-spill__item:hover, .folder-spill__item:focus-visible {
-  transform: translate(calc(-50% + var(--step) * var(--n, 0)), -18px) rotate(0deg) scale(1.12);
+  transform: translate(calc(-50% + var(--step) * var(--n, 0)), -22px) rotate(0deg) scale(1.12);
   box-shadow: var(--shadow-lg);
   z-index: 30;
 }
