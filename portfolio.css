@@ -372,6 +372,43 @@ body.cursor-talk .cursor__label {
 .svc__chip { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: var(--bg-surface); color: var(--mv-indigo); padding: 6px 13px; border-radius: var(--r-pill); margin: 0 0 10px; }
 
 /* ============================================================
+   CAMPAIGN ARCHIVE — editorial listing (name / category / services / year)
+   ============================================================ */
+.campaign-archive { border-top: 1px solid var(--border-soft); margin-top: 8px; }
+.campaign-row {
+  display: grid; grid-template-columns: 1.5fr .8fr 1fr auto; align-items: center; gap: 20px;
+  padding: 30px 6px; border-bottom: 1px solid var(--border-soft);
+  text-decoration: none; position: relative; overflow: hidden;
+  transition: background var(--dur-base) var(--ease-out);
+}
+a.campaign-row:hover { background: var(--accent-soft); }
+.campaign-row__photo {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: var(--row-photo, none); background-size: cover; background-position: center;
+  opacity: 0; transform: scale(1.04);
+  transition: opacity var(--dur-slow) var(--ease-out), transform 1.2s var(--ease-out);
+  pointer-events: none;
+}
+a.campaign-row:hover .campaign-row__photo { opacity: .16; transform: scale(1); }
+.campaign-row__name { font-family: var(--font-display); font-size: clamp(26px,3.6vw,44px); font-weight: 600; color: var(--mv-indigo); line-height: 1.05; position: relative; z-index: 1; }
+.campaign-row__name em { font-style: italic; color: var(--accent); }
+.campaign-row__cat { font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink, var(--mv-lavender)); position: relative; z-index: 1; }
+.campaign-row__services { font-size: 14px; color: var(--mv-shadow); line-height: 1.7; position: relative; z-index: 1; }
+.campaign-row__services span { display: block; }
+.campaign-row__year { font-family: var(--font-display); font-size: 18px; font-weight: 500; color: var(--fg-3); text-align: right; position: relative; z-index: 1; }
+.campaign-row--soon { cursor: default; opacity: .55; }
+.campaign-row--soon .campaign-row__name { color: var(--fg-3); }
+
+/* back link on standalone campaign pages */
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase;
+  color: var(--mv-shadow); text-decoration: none; margin-bottom: 28px;
+  transition: color var(--dur-fast) var(--ease-out), gap var(--dur-fast) var(--ease-out);
+}
+.back-link:hover { color: var(--accent, var(--mv-coral)); gap: 12px; }
+
+/* ============================================================
    TOOLS marquee
    ============================================================ */
 .tools { padding: clamp(54px,7vh,90px) 0; overflow: hidden; }
@@ -743,4 +780,6 @@ body.cursor-talk .cursor__label {
   .frame-embed { aspect-ratio: 9/16; }
   .bora-board { grid-template-columns: 1fr; }
   .bora-board__side { grid-template-columns: 1fr 1fr; }
+  .campaign-row { grid-template-columns: 1fr; gap: 4px; padding: 22px 4px; }
+  .campaign-row__year { order: -1; text-align: left; font-size: 13px; color: var(--accent); }
 }
