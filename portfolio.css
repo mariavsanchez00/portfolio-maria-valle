@@ -586,32 +586,50 @@ a.campaign-row:hover .campaign-row__photo { opacity: .16; transform: scale(1); }
 }
 .shot:hover .shot__cap { opacity: 1; transform: none; }
 
-/* horizontal-scroll gallery row — no visible scrollbar, gentle snap */
-.gallery--scroll {
-  display: flex; gap: 16px; overflow-x: auto; padding: 2px 2px 4px;
-  scroll-snap-type: x proximity; scrollbar-width: none; -ms-overflow-style: none;
+/* ============================================================
+   FOLDER SPILL — creatives fanned out of a folder, like icons
+   spilling from behind a head on hover (trevornoah.com-style)
+   ============================================================ */
+.folder-spill { position: relative; margin: 0 auto; max-width: 760px; }
+.folder-spill__stage {
+  --step: clamp(44px, 8.6vw, 70px);
+  position: relative; display: flex; justify-content: center; align-items: flex-end;
+  min-height: clamp(230px, 34vw, 300px);
+  padding-bottom: clamp(60px, 11vw, 90px);
 }
-.gallery--scroll::-webkit-scrollbar { display: none; }
-.gallery--scroll .shot { scroll-snap-align: start; }
-
-/* directional arrow button for .gallery--scroll — sits on whichever edge
-   still has content, flips side + points the other way at the far end */
-.gallery-wrap { position: relative; }
-.gallery-scroll-btn {
-  position: absolute; top: 50%; right: 6px; transform: translateY(-50%);
-  width: 44px; height: 44px; border-radius: 50%;
-  display: grid; place-items: center;
-  background: var(--mv-indigo); color: var(--mv-paper);
-  border: none; box-shadow: var(--shadow-md); cursor: pointer; z-index: 2;
-  opacity: 0; pointer-events: none; transition: opacity var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
+.folder-spill__folder { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: clamp(180px, 32vw, 250px); z-index: 0; pointer-events: none; }
+.folder-spill__folder svg { display: block; width: 100%; height: auto; filter: drop-shadow(0 10px 16px rgba(26,21,53,.14)); }
+.folder-spill__item {
+  position: absolute; left: 50%; bottom: clamp(46px, 7.6vw, 70px);
+  width: clamp(92px, 15vw, 140px); height: clamp(120px, 20vw, 182px);
+  border-radius: var(--r-lg); overflow: hidden;
+  border: 4px solid var(--bg-surface); box-shadow: var(--shadow-sm);
+  background: var(--bg-sunken); cursor: zoom-in;
+  transform: translate(calc(-50% + var(--step) * var(--n, 0)), 0) rotate(var(--r, 0deg));
+  transition: transform .5s var(--ease-spring), box-shadow var(--dur-base) var(--ease-out);
+  z-index: var(--z, 1);
 }
-.gallery-scroll-btn.is-visible { opacity: 1; pointer-events: auto; }
-.gallery-scroll-btn:hover { background: var(--mv-coral); }
-.gallery-scroll-btn:active { transform: translateY(-50%) scale(.92); }
-.gallery-scroll-btn svg { width: 18px; height: 18px; }
-.gallery-scroll-btn--start { left: 6px; right: auto; }
-.gallery-scroll-btn--start svg { transform: scaleX(-1); }
-@media (max-width: 640px) { .gallery-scroll-btn { display: none; } }
+.folder-spill__item img, .folder-spill__item video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.folder-spill__item:hover, .folder-spill__item:focus-visible {
+  transform: translate(calc(-50% + var(--step) * var(--n, 0)), -18px) rotate(0deg) scale(1.12);
+  box-shadow: var(--shadow-lg);
+  z-index: 30;
+}
+.folder-spill__cap {
+  position: absolute; left: 50%; bottom: -28px; transform: translateX(-50%);
+  font-size: 11px; font-weight: 600; letter-spacing: .02em; white-space: nowrap;
+  background: var(--mv-indigo); color: var(--mv-paper); padding: 5px 11px; border-radius: var(--r-pill);
+  opacity: 0; pointer-events: none; transition: opacity var(--dur-base) var(--ease-out);
+}
+.folder-spill__item:hover .folder-spill__cap, .folder-spill__item:focus-visible .folder-spill__cap { opacity: 1; }
+.folder-spill__play {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  background: rgba(26,21,53,.3); color: #fff; opacity: 1; transition: opacity var(--dur-base) var(--ease-out);
+  border: none; padding: 0; cursor: pointer;
+}
+.folder-spill__play svg { width: 22px; height: 22px; }
+.folder-spill__item.is-playing .folder-spill__play { opacity: 0; pointer-events: none; }
+.folder-spill__item video[controls] { cursor: auto; }
 
 /* device frames */
 .frame-browser { border-radius: 14px 14px var(--r-lg) var(--r-lg); overflow: hidden; border: 1px solid var(--border-default); background: var(--mv-white); box-shadow: var(--shadow-md); }

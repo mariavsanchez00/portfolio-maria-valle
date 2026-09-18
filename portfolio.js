@@ -64,7 +64,7 @@
     safe("heroPattern", initHeroPattern);
     safe("toTop", initToTop);
     safe("lightbox", initLightbox);
-    safe("galleryScrollBtn", initGalleryScrollBtns);
+    safe("folderSpillVideo", initFolderSpillVideos);
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
@@ -294,29 +294,20 @@
     onScroll();
   }
 
-  /* ---------- directional arrow for horizontal-scroll galleries ---------- */
-  function initGalleryScrollBtns() {
-    document.querySelectorAll(".gallery-scroll-btn").forEach((btn) => {
-      const track = document.getElementById(btn.dataset.target);
-      if (!track) return;
-      const EDGE = 4; // px tolerance for "at the end" / "not scrollable"
-
-      function update() {
-        const scrollable = track.scrollWidth - track.clientWidth > EDGE;
-        if (!scrollable) { btn.classList.remove("is-visible"); return; }
-        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - EDGE;
-        btn.classList.add("is-visible");
-        btn.classList.toggle("gallery-scroll-btn--start", atEnd);
-        btn.setAttribute("aria-label", atEnd ? "Volver al principio" : "Ver más");
-      }
-      track.addEventListener("scroll", update, { passive: true });
-      window.addEventListener("resize", update);
-      btn.addEventListener("click", () => {
-        const atEnd = btn.classList.contains("gallery-scroll-btn--start");
-        const amount = track.clientWidth * 0.8 * (atEnd ? -1 : 1);
-        track.scrollBy({ left: amount, behavior: prefersReduced ? "auto" : "smooth" });
+  /* ---------- play button for videos fanned out in a .folder-spill ---------- */
+  function initFolderSpillVideos() {
+    document.querySelectorAll(".folder-spill__item--video").forEach((item) => {
+      const video = item.querySelector("video");
+      const playBtn = item.querySelector(".folder-spill__play");
+      if (!video || !playBtn) return;
+      playBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        video.setAttribute("controls", "");
+        item.classList.add("is-playing");
+        video.play().catch(() => {});
       });
-      update();
+      video.addEventListener("pause", () => item.classList.remove("is-playing"));
+      video.addEventListener("play", () => item.classList.add("is-playing"));
     });
   }
 
