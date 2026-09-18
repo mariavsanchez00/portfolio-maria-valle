@@ -364,11 +364,12 @@ body.cursor-talk .cursor__label {
 .svc__dot { position: absolute; top: 26px; right: 26px; width: 9px; height: 9px; border-radius: 50%; background: var(--mv-coral); opacity: .55; transition: transform var(--dur-base) var(--ease-spring); }
 .svc:hover .svc__dot { transform: scale(1.5); opacity: .9; }
 /* confidential project card — locked state, no case material to show yet */
-.svc--locked { cursor: default; background-color: var(--bg-tint); }
+.svc--locked { cursor: default; background-color: var(--bg-tint); text-align: center; }
 .svc--locked:hover { transform: none; box-shadow: none; border-color: var(--border-soft); }
 .svc--locked:hover .svc__dot { transform: none; opacity: .55; }
-.svc__lock { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--bg-surface); border: 1px solid var(--border-soft); color: var(--mv-lavender); margin-bottom: 14px; }
-.svc__lock svg { width: 15px; height: 15px; }
+.svc--locked .svc__num { display: block; margin-bottom: 4px; }
+.svc__chainbox { width: 100px; margin: 0 auto 16px; filter: drop-shadow(0 3px 5px rgba(26,21,53,.12)); }
+.svc__chainbox svg { display: block; width: 100%; height: auto; }
 .svc__chip { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: var(--bg-surface); color: var(--mv-indigo); padding: 6px 13px; border-radius: var(--r-pill); margin: 0 0 10px; }
 
 /* ============================================================
