@@ -65,6 +65,9 @@
     safe("toTop", initToTop);
     safe("lightbox", initLightbox);
     safe("folderSpillVideo", initFolderSpillVideos);
+    safe("header", initHeader);
+    safe("workFilters", initWorkFilters);
+    safe("liveThumbs", initLiveThumbs);
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
@@ -292,6 +295,55 @@
       window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
     });
     onScroll();
+  }
+
+  /* ---------- header: solid background once the page scrolls ---------- */
+  function initHeader() {
+    const header = document.querySelector(".hdr");
+    if (!header) return;
+    function onScroll() {
+      header.classList.toggle("is-scrolled", (window.scrollY || document.documentElement.scrollTop) > 8);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ---------- live website thumbnails: scale a 1280px-wide iframe to fit its card ---------- */
+  function initLiveThumbs() {
+    const boxes = Array.from(document.querySelectorAll(".screen-live"));
+    if (!boxes.length) return;
+    function fit() {
+      boxes.forEach((box) => {
+        const frame = box.querySelector("iframe");
+        if (!frame || !box.clientWidth) return;
+        const scale = box.clientWidth / 1280;
+        frame.style.height = Math.ceil(box.clientHeight / scale) + "px";
+        frame.style.transform = "scale(" + scale + ")";
+      });
+    }
+    window.addEventListener("resize", fit);
+    window.addEventListener("load", fit);
+    fit();
+  }
+
+  /* ---------- trabajo: filter the project grid by discipline (#hash aware) ---------- */
+  function initWorkFilters() {
+    const chips = Array.from(document.querySelectorAll(".filter-chip[data-filter]"));
+    const grid = document.getElementById("work-grid");
+    if (!chips.length || !grid) return;
+    const cards = Array.from(grid.querySelectorAll(".card[data-cats]"));
+    function apply(key, remember) {
+      const k = chips.some((c) => c.dataset.filter === key) ? key : "all";
+      chips.forEach((c) => c.classList.toggle("is-active", c.dataset.filter === k));
+      cards.forEach((card) => { card.hidden = !(k === "all" || card.dataset.cats.split(" ").indexOf(k) > -1); });
+      grid.classList.remove("is-filtering");
+      void grid.offsetWidth;
+      grid.classList.add("is-filtering");
+      if (remember) { try { history.replaceState(null, "", k === "all" ? location.pathname : "#" + k); } catch (e) {} }
+    }
+    chips.forEach((c) => c.addEventListener("click", () => apply(c.dataset.filter, true)));
+    window.addEventListener("hashchange", () => apply(location.hash.slice(1), false));
+    apply(location.hash.slice(1), false);
   }
 
   /* ---------- play button for videos fanned out in a .folder-spill ---------- */
