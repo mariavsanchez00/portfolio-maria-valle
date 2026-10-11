@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>addEventListener("error",function(e){if(e.target&&e.target.tagName==="IMG")e.target.style.visibility="hidden"},true)</script><script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:'MuseoModerno';src:url('assets/fonts/MuseoModerno.ttf') format('truetype');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Neue';src:url('assets/fonts/Neue-Light.otf') format('opentype');font-weight:300;font-display:swap}
+@font-face{font-family:'Neue';src:url('assets/fonts/Neue-Regular.otf') format('opentype');font-weight:400;font-display:swap}
+@font-face{font-family:'Neue';src:url('assets/fonts/Neue-Medium.otf') format('opentype');font-weight:500;font-display:swap}
+@font-face{font-family:'Neue';src:url('assets/fonts/Neue-SemiBold.otf') format('opentype');font-weight:600;font-display:swap}
+@font-face{font-family:'Neue';src:url('assets/fonts/Neue-Bold.otf') format('opentype');font-weight:700;font-display:swap}
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#FFF9F2;color:#2A1C14;font-family:'Neue','Mulish',sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html[data-loading]{overflow:hidden}
+a{color:inherit;text-decoration:none}
+ul{margin:0;padding:0;list-style:none}
+::selection{background:#AC6532;color:#FFF9F2}
+@media (pointer:fine){ body,a,button,[data-hover]{cursor:none} }
+@keyframes mlnWipe{ from{clip-path:inset(100% 0 0 0);opacity:.12} to{clip-path:inset(0 0 0 0);opacity:1} }
+@keyframes mlnFadeUp{ from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+@keyframes mlnBlink{ 0%,100%{opacity:1} 50%{opacity:.25} }
+@keyframes mlnFloat{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
+@keyframes mlnPulse{ 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(.5);opacity:.3} }
+@keyframes mlnFall{ to{transform:translateY(120vh) rotate(400deg)} }
+@keyframes mlnDot{ 0%,60%,100%{transform:translateY(0);opacity:.4} 30%{transform:translateY(-5px);opacity:1} }
+@keyframes mlnSpin{ to{transform:rotate(360deg)} }
+@keyframes mlnReveal{ from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:none} }
+@keyframes mlnRipple{ 0%{transform:scale(.5);opacity:.55} 80%,100%{transform:scale(1.9);opacity:0} }
+[data-reveal]{ animation:mlnReveal linear both; animation-timeline:view(); animation-range:entry 0% cover 34% }
+@media (prefers-reduced-motion:reduce){ *{animation-duration:.001s!important;animation-iteration-count:1!important} [data-reveal]{animation:none} }
+</style>
+</helmet>
+
+<div id="mln-cursor" style="position:fixed;top:0;left:0;z-index:9999;pointer-events:none;transform:translate(-50%,-50%);display:none">
+  <div id="mln-reticle" style="position:absolute;top:50%;left:50%;width:38px;height:38px;transform:translate(-50%,-50%);transition:width .22s ease,height .22s ease">
+    <div style="position:absolute;inset:0;border:1.5px solid #496977;border-radius:50%;opacity:.55;animation:mlnSpin 6s linear infinite"></div>
+    <div id="mln-b1" style="position:absolute;top:-2px;left:50%;width:1.5px;height:7px;background:#AC6532;transform:translateX(-50%)"></div>
+    <div id="mln-b2" style="position:absolute;bottom:-2px;left:50%;width:1.5px;height:7px;background:#AC6532;transform:translateX(-50%)"></div>
+    <div id="mln-b3" style="position:absolute;left:-2px;top:50%;height:1.5px;width:7px;background:#AC6532;transform:translateY(-50%)"></div>
+    <div id="mln-b4" style="position:absolute;right:-2px;top:50%;height:1.5px;width:7px;background:#AC6532;transform:translateY(-50%)"></div>
+  </div>
+  <div id="mln-cdot" style="position:absolute;top:50%;left:50%;width:5px;height:5px;border-radius:50%;background:#AC6532;transform:translate(-50%,-50%)"></div>
+</div>
+
+<div id="mln-preview" style="position:fixed;top:0;left:0;z-index:9998;pointer-events:none;transform:translate(26px,-55%);transition:opacity .28s ease,transform .28s ease;width:300px">
+  <div data-pv-box style="height:196px;border-radius:14px;overflow:hidden;box-shadow:0 24px 50px -20px rgba(20,12,8,.6);background:#17120F;border:1px solid rgba(255,255,255,.08)"></div>
+  <div data-pv-title style="font-family:'MuseoModerno',sans-serif;font-weight:600;font-size:20px;color:#F5ECE2;margin-top:12px"></div>
+  <div data-pv-kicker style="font-family:'Neue',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#a8927e;margin-top:3px"></div>
+</div>
+
+<div id="mln-egg" style="position:fixed;inset:0;z-index:9000;pointer-events:none;display:none"></div>
+
+<div id="mln-loader" style="position:fixed;inset:0;z-index:9500;background:#FFF9F2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .7s ease">
+  <div style="position:relative;width:clamp(120px,18vw,180px);height:clamp(104px,16vw,156px)">
+    <img src="assets/logo-mark.png" alt="" style="width:100%;height:100%;object-fit:contain;animation:mlnWipe 1.3s cubic-bezier(.4,0,.2,1) forwards"/>
+  </div>
+  <img src="assets/logo-word.png" alt="Melendo" style="width:clamp(120px,16vw,168px);opacity:0;animation:mlnFadeUp .7s ease .9s forwards"/>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:mlnFadeUp .6s ease 1.1s forwards">
+    <div style="width:clamp(150px,24vw,240px);height:3px;background:rgba(42,28,20,.1);border-radius:2px;overflow:hidden">
+      <div id="mln-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#496977,#AC6532);transition:width .12s linear"></div>
+    </div>
+    <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.3em;color:#8a7868">CARGANDO <span id="mln-counter">000</span></div>
+  </div>
+</div>
+
+<svg id="mln-thread" aria-hidden="true" preserveAspectRatio="none" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:visible">
+  <path id="mln-thread-base" fill="none" stroke="rgba(120,92,62,.09)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path id="mln-thread-trail" fill="none" stroke="#AC6532" stroke-opacity=".28" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"></path>
+  <g id="mln-thread-start" style="opacity:0">
+    <circle r="7" fill="none" stroke="#AC6532" stroke-width="2.5"></circle>
+    <circle r="2.6" fill="#AC6532"></circle>
+    <text x="-16" y="3.5" text-anchor="end" font-family="'Neue',sans-serif" font-size="11" font-weight="700" letter-spacing="2.5" fill="#AC6532">INICIO</text>
+  </g>
+  <g id="mln-thread-meta" style="opacity:0">
+    <rect x="-1.5" y="-28" width="3" height="36" rx="1.5" fill="#2A1A10"></rect>
+    <g transform="translate(3,-28)">
+      <rect width="11" height="8" fill="#2A1A10"></rect>
+      <rect x="11" width="11" height="8" fill="#FFF9F2" stroke="#2A1A10" stroke-width="1"></rect>
+      <rect y="8" width="11" height="8" fill="#FFF9F2" stroke="#2A1A10" stroke-width="1"></rect>
+      <rect x="11" y="8" width="11" height="8" fill="#2A1A10"></rect>
+    </g>
+    <circle r="6.5" fill="none" stroke="#AC6532" stroke-width="2.5"></circle>
+    <circle r="2.4" fill="#AC6532"></circle>
+  </g>
+  <g id="mln-thread-dot" style="opacity:0">
+    <circle r="26" fill="none" stroke="#AC6532" stroke-width="2" style="transform-box:fill-box;transform-origin:center;animation:mlnRipple 2.4s ease-out infinite"></circle>
+    <circle r="15" fill="rgba(172,101,50,.22)"></circle>
+    <circle r="8" fill="#AC6532"></circle>
+    <circle r="3.1" fill="#FFF9F2"></circle>
+  </g>
+</svg>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(20px,5vw,80px);background:rgba(255,249,242,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(42,28,20,.07)">
+  <a href="#top" data-hover style="display:flex;align-items:center;gap:10px">
+    <img src="assets/logo-mark.png" alt="" style="width:32px;height:27px;object-fit:contain"/>
+    <span style="font-family:'MuseoModerno',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em;color:#2A1A10">Melendo</span>
+  </a>
+  <nav style="display:flex;align-items:center;gap:clamp(10px,2vw,26px)">
+    <a href="#work" data-hover style="font-size:14px;font-weight:600;color:#2A1C14">{{ t.nav.work }}</a>
+    <a href="#contact" data-hover style="font-size:14px;font-weight:600;color:#2A1C14">{{ t.nav.contact }}</a>
+    <button onClick="{{ toggleSound }}" data-hover aria-label="sound" style="display:flex;align-items:center;gap:7px;background:none;border:1px solid rgba(42,28,20,.18);border-radius:999px;padding:6px 11px;font-family:'Space Mono',monospace;font-size:11px;color:#496977">
+      <span style="width:7px;height:7px;border-radius:50%;background:{{ soundColor }};display:inline-block"></span>{{ soundLabel }}
+    </button>
+    <button onClick="{{ toggleLang }}" data-hover style="background:#2A1A10;color:#FFF9F2;border:none;border-radius:999px;padding:7px 14px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.05em">{{ otherLang }}</button>
+  </nav>
+</header>
+
+<main id="top">
+
+<section data-screen-label="Hero" style="position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px clamp(20px,5vw,80px) 90px;overflow:hidden">
+  <img src="assets/logo-mark.png" alt="" style="position:absolute;right:-3vw;top:13vh;width:min(46vw,560px);opacity:.1;animation:mlnFloat 7s ease-in-out infinite;pointer-events:none;z-index:0"/>
+  <div style="position:relative;z-index:1;max-width:1120px">
+    <div data-reveal style="transition:opacity .8s ease,transform .8s ease;display:flex;align-items:center;gap:11px;margin-bottom:28px">
+      <span style="width:9px;height:9px;border-radius:50%;background:#4d9a5e;animation:mlnPulse 1.8s ease-in-out infinite"></span>
+      <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;color:#8a7868;text-transform:uppercase">{{ t.hero.status }}</span>
+    </div>
+    <p data-reveal style="transition:opacity .8s ease .05s,transform .8s ease .05s;font-family:'Neue',sans-serif;font-weight:500;font-size:clamp(18px,2.2vw,26px);color:#AC6532;margin:0 0 16px">{{ t.hero.greeting }}</p>
+    <h1 data-reveal style="transition:opacity .9s ease .1s,transform .9s ease .1s;font-family:'MuseoModerno',sans-serif;font-weight:600;font-size:clamp(40px,7.6vw,100px);line-height:.96;letter-spacing:-.02em;color:#2A1A10;margin:0 0 30px;max-width:14ch;text-wrap:balance">{{ t.hero.headline }}</h1>
+    <p data-reveal style="transition:opacity .8s ease .18s,transform .8s ease .18s;font-size:clamp(16px,1.4vw,20px);line-height:1.6;color:#6B5A4C;max-width:52ch;margin:0">{{ t.hero.sub }}</p>
+  </div>
+</section>
+
+<section id="work" data-screen-label="Work index" style="position:relative;z-index:1;background:#14100C;color:#FFF9F2;padding:clamp(70px,11vh,130px) 0 clamp(60px,9vh,110px);overflow:hidden">
+  <div data-reveal style="transition:opacity .8s ease,transform .8s ease;display:flex;align-items:flex-start;justify-content:space-between;gap:28px;flex-wrap:wrap;padding:0 clamp(20px,5vw,80px);margin-bottom:clamp(34px,7vh,72px)">
+    <div>
+      <div style="font-family:'Neue',sans-serif;font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#AC6532;margin-bottom:16px">{{ t.workIntro.label }} ({{ t.workIntro.count }})</div>
+      <h2 style="font-family:'MuseoModerno',sans-serif;font-weight:600;font-size:clamp(28px,4.6vw,56px);line-height:1.03;letter-spacing:-.02em;margin:0;max-width:16ch;color:#F5ECE2">{{ t.workIntro.title }}</h2>
+    </div>
+    <div style="max-width:26ch;text-align:right;font-family:'Neue',sans-serif;font-size:13.5px;line-height:1.55;color:#a8927e">{{ t.workIntro.sub }}</div>
+  </div>
+  <div>
+    <sc-for list="{{ indexRows }}" as="row" hint-placeholder-count="4">
+      <a href="{{ row.anchor }}" data-hover data-prev data-key="{{ row.key }}" data-title="{{ row.title }}" data-kicker="{{ row.kicker }}" data-hrow data-dir="{{ row.dir }}" style="display:block;border-top:1px solid rgba(255,249,242,.13);padding:clamp(15px,2.8vh,34px) 0;position:relative">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:0 clamp(20px,5vw,80px);margin-bottom:clamp(5px,1.2vh,12px)">
+          <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;color:#AC6532">{{ row.n }}</span>
+          <span style="font-family:'Neue',sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7a6a5c;text-align:right">{{ row.kicker }}</span>
+        </div>
+        <div data-htrack style="white-space:nowrap;will-change:transform;font-family:'MuseoModerno',sans-serif;font-weight:700;font-size:clamp(44px,10vw,140px);line-height:.92;letter-spacing:-.02em;color:#574740;transition:color .35s ease;padding-left:clamp(20px,5vw,80px)" style-hover="color:#F5ECE2">{{ row.marquee }}</div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<!-- WORK 01 FRONTEND -->
+<section id="p-frontend" data-screen-label="Frontend" style="position:relative;z-index:1;padding:clamp(50px,8vh,100px) clamp(20px,5vw,80px)">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(34px,5vw,72px);align-items:center">
+    <div data-reveal style="transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)">
+      <div style="display:flex;align-items:center;gap:13px;margin-bottom:20px"><span style="font-family:'MuseoModerno',sans-serif;font-weight:700;font-size:14px;color:#AC6532">01</span><span style="width:28px;height:1.5px;background:rgba(172,101,50,.45)"></span><span style="font-family:'Neue',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#8a7868">{{ t.frontend.kicker }}</span></div>
+      <h3 style="font-family:'MuseoModerno',sans-serif;font-weight:600;font-size:clamp(30px,4.6vw,56px);line-height:1.0;letter-spacing:-.02em;color:#2A1A10;margin:0 0 12px">{{ t.frontend.title }}</h3>
+      <p style="font-family:'Neue',sans-serif;font-style:italic;font-size:clamp(15px,1.5vw,19px);color:#496977;margin:0 0 18px">{{ t.frontend.tagline }}</p>
+      <p style="font-size:16px;line-height:1.65;color:#6B5A4C;margin:0 0 26px;max-width:52ch">{{ t.frontend.desc }}</p>
+      <ul style="margin:0 0 26px">
+        <sc-for list="{{ t.frontend.items }}" as="item" hint-placeholder-count="5">
+          <li style="display:flex;gap:13px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(42,28,20,.08);font-size:15px;color:#2A1C14"><span style="color:#AC6532;font-size:9px">◆</span>{{ item }}</li>
+        </sc-for>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ t.frontend.tech }}" as="tag" hint-placeholder-count="5">
+          <span style="font-family:'Space Mono',monospace;font-size:12px;padding:6px 12px;border:1px solid rgba(73,105,119,.3);border-radius:999px;color:#496977">{{ tag }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div data-reveal style="transition:opacity 1s ease .1s,transform 1s ease .1s">
+      <div style="border-radius:20px;padding:clamp(18px,2.4vw,26px);background:linear-gradient(150deg,#3a1c4e 0%,#7a2f3e 56%,#AC6532 128%);box-shadow:0 34px 70px -30px rgba(58,28,78,.7);position:relative;overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+          <span style="font-family:'Neue',sans-serif;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,249,242,.82)">Sistema de diseño</span>
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,249,242,.6)">05 / 05</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px">
+          <sc-for list="{{ frontendCards }}" as="c" hint-placeholder-count="5">
+            <div data-hover style="background:rgba(18,10,26,.5);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:14px;transition:transform .3s ease,border-color .3s ease" style-hover="transform:translateY(-4px);border-color:rgba(242,92,162,.65)">
+              <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:12px;color:#F25CA2;margin-bottom:9px">{{ c.n }}</div>
+              <div style="font-family:'Neue',sans-serif;font-weight:500;font-size:14px;line-height:1.25;color:#FFF9F2">{{ c.text }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK 02 BACKEND -->
+<section id="p-backend" data-screen-label="Backend" style="position:relative;z-index:1;padding:clamp(50px,8vh,100px) clamp(20px,5vw,80px)">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(34px,5vw,72px);align-items:center">
+    <div data-reveal style="transition:opacity 1s ease .1s,transform 1s ease .1s">
+      <div data-hover style="background:#211611;border-radius:18px;padding:28px;box-shadow:0 30px 60px -28px rgba(33,22,17,.6);overflow:hidden;position:relative;transition:transform .4s ease" style-hover="transform:translateY(-6px)">
+        <div style="position:absolute;left:34px;top:74px;bottom:30px;width:2px;background:linear-gradient(#AC6532,#496977,transparent)"></div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#7a6a5c;margin-bottom:22px">PROFUNDIDAD · STACK</div>
+        <sc-for list="{{ t.backend.layers }}" as="layer" hint-placeholder-count="4">
+          <div data-hover style="position:relative;padding:14px 14px 14px 64px;border-radius:11px;margin-bottom:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;gap:14px;transition:background .25s ease" style-hover="background:rgba(172,101,50,.12)">
+            <span style="position:absolute;left:14px;font-family:'Space Mono',monospace;font-size:11px;color:#AC6532">{{ layer.depth }}</span>
+            <span style="font-family:'MuseoModerno',sans-serif;font-weight:500;font-size:17px;color:#FFF9F2">{{ layer.name }}</span>
+            <span style="font-family:'Space Mono',monospace;font-size:11px;color:#8a7868;text-align:right">{{ layer.note }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div data-reveal style="transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)">
+      <div style="display:flex;align-items:center;gap:13px;margin-bottom:20px"><span style="font-family:'MuseoModerno',sans-serif;font-weight:700;font-size:14px;color:#AC6532">02</span><span style="width:28px;height:1.5px;background:rgba(172,101,50,.45)"></span><span style="font-family:'Neue',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#8a7868">{{ t.backend.kicker }}</span></div>
+      <h3 style="font-family:'MuseoModerno',sans-serif;font-weight:600;font-size:clamp(30px,4.6vw,56px);line-height:1.0;letter-spacing:-.02em;color:#2A1A10;margin:0 0 12px">{{ t.backend.title }}</h3>
+      <p style="font-family:'Neue',sans-serif;font-style:italic;font-size:clamp(15px,1.5vw,19px);color:#496977;margin:0 0 18px">{{ t.backend.tagline }}</p>
+      <p style="font-size:16px;line-height:1.65;color:#6B5A4C;margin:0 0 26px;max-width:52ch">{{ t.backend.desc }}</p>
+      <ul style="margin:0 0 26px">
+        <sc-for list="{{ t.backend.items }}" as="item" hint-placeholder-count="5">
+          <li style="display:flex;gap:13px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(42,28,20,.08);font-size:15px;color:#2A1C14"><span style="color:#AC6532;font-size:9px">◆</span>{{ item }}</li>
+        </sc-for>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ t.backend.tech }}" as="tag" hint-placeholder-count="6">
+          <span style="font-family:'Space Mono',monospace;font-size:12px;padding:6px 12px;border:1px solid rgba(73,105,119,.3);border-radius:999px;color:#496977">{{ tag }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK 03 PMS -->
+<section id="p-pms" data-screen-label="PMS" style="position:relative;z-index:1;padding:clamp(50px,8vh,100px) clamp(20px,5vw,80px)">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(34px,5vw,72px);align-items:center">
+    <div data-reveal style="transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)">
+      <div style="display:flex;align-items:center;gap:13px;margin-bottom:20px"><span style="font-family:'MuseoModerno',sans-serif;font-weight:700;font-size:14px;color:#AC6532">03</span><span style="width:28px;height:1.5px;background:rgba(172,101,50,.45)"></span><span style="font-family:'Neue',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#8a7868">{{ t.pms.kicker }}</span></div>
+      <h3 style="font-family:'MuseoModerno',sans-serif;font-weight:600;font-size:clamp(30px,4.6vw,56px);line-height:1.0;letter-spacing:-.02em;color:#2A1A10;margin:0 0 12px">{{ t.pms.title }}</h3>
+      <p style="font-family:'Neue',sans-serif;font-style:italic;font-size:clamp(15px,1.5vw,19px);color:#496977;margin:0 0 18px">{{ t.pms.tagline }}</p>
+      <p style="font-size:16px;line-height:1.65;color:#6B5A4C;margin:0 0 26px;max-width:52ch">{{ t.pms.desc }}</p>
+      <ul style="margin:0 0 26px">
+        <sc-for list="{{ t.pms.items }}" as="item" hint-placeholder-count="5">
+          <li style="display:flex;gap:13px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(42,28,20,.08);font-size:15px;color:#2A1C14"><span style="color:#AC6532;font-size:9px">◆</span>{{ item }}</li>
+        </sc-for>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px">
+        <a href="#" data-hover style="display:inline-flex;align-items:center;gap:8px;background:#AC6532;color:#fff;border-radius:11px;padding:12px 20px;font-weight:700;font-size:14px;transition:transform .2s ease" style-hover="transform:translateY(-3px)">▶ {{ t.pms.demo }}</a>
+        <a href="#" data-hover style="display:inline-flex;align-items:center;gap:8px;background:none;color:#2A1A10;border:1.5px solid rgba(42,28,20,.25);border-radius:11px;padding:11px 18px;font-weight:700;font-size:14px;transition:border-color .2s ease" style-hover="border-color:#AC6532">◉ {{ t.pms.video }}</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ t.pms.tech }}" as="tag" hint-placeholder-count="6">
+          <span style="font-family:'Space Mono',monospace;font-size:12px;padding:6px 12px;border:1px solid rgba(73,105,119,.3);border-radius:999px;color:#496977">{{ tag }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div data-reveal style="transition:opacity 1s ease .1s,transform 1s ease .1s">
+      <div data-hover style="background:#2b1d14;border-radius:18px;padding:22px;box-shadow:0 30px 60px -28px rgba(43,29,20,.6);border:1px solid rgba(172,101,50,.15);transition:transform .4s ease" style-hover="transform:translateY(-6px)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:#cBb6a2">{{ t.pms.ledger }}</span>
+          <span style="display:flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:11px;color:#4d9a5e"><span style="width:7px;height:7px;border-radius:50%;background:#4d9a5e;animation:mlnPulse 1.6s ease-in-out infinite"></span>{{ t.pms.live }}</span>
+        </div>
+        <sc-for list="{{ t.pms.rooms }}" as="room" hint-placeholder-count="4">
+          <div data-pms-row style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 12px;border-radius:11px;margin-bottom:8px;border:1px solid rgba(255,255,255,.07);transition:background .4s ease">
+            <div>
+              <div style="font-family:'MuseoModerno',sans-serif;font-weight:500;font-size:16px;color:#FFF9F2">{{ room.n }} · {{ room.name }}</div>
+              <div style="font-size:12px;color:#a8927e">{{ room.guest }}</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-family:'Space Mono',monospace;font-size:11px;color:#a8927e">{{ room.time }}</span>
+              <span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.04em;padding:5px 9px;border-radius:6px;color:{{ room.fg }};background:{{ room.bg }};border:1px solid {{ room.bd }}">{{ room.status }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK · WEBS INDEX (direct links, no previews) -->
+<section id="p-webs" data-screen-label="Webs" style="position:relative;z-index:1;background:#14100C;color:#FFF9F2;padding:clamp(70px,11vh,130px) 0 clamp(60px,9vh,110px);overflow:hidden">
+  <div data-reveal style="transition:opacity .8s ease,transform .8s ease;display:flex;align-items:flex-start;justify-content:space-between;gap:28px;flex-wrap:wrap;padding:0 clamp(20px,5vw,80px);margin-bottom:clamp(34px,7vh,72px)">
+    <div>
+      <div style="display:flex;align-items:center;gap:13px;margin-bottom:16px"><span style="font-family:'MuseoModerno',sans-serif;font-weight:700;font-size:14px;color:#AC6532">05</span><span style="width:28px;height:1.5px;background:rgba(172,101,50,.45)"></span><span style="font-family:'Neue',sans-serif;font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#AC6532">{{ t.websIntro.label }} ({{ t.websIntro.count }})</span></div>
+      <h2 style="font-family:'MuseoModerno',sans-serif;font-weight:600;font-size:clamp(28px,4.6vw,56px);line-height:1.03;letter-spacing:-.02em;margin:0;max-width:16ch;color:#F5ECE2">{{ t.websIntro.title }}</h2>
+    </div>
+    <div style="max-width:26ch;text-align:right;font-family:'Neue',sans-serif;font-size:13.5px;line-height:1.55;color:#a8927e">{{ t.websIntro.sub }}</div>
+  </div>
+  <div>
+    <sc-for list="{{ webRows }}" as="row" hint-placeholder-count="4">
+      <a href="{{ row.url }}" target="_blank" rel="noopener" data-hover data-hrow data-dir="{{ row.dir }}" style="display:block;border-top:1px solid rgba(255,249,242,.13);padding:clamp(15px,2.8vh,34px) 0;position:relative">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:0 clamp(20px,5vw,80px);margin-bottom:clamp(5px,1.2vh,12px)">
+          <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;color:#AC6532">{{ row.n }}</span>
+          <span style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;color:#a8927e;text-align:right">↗ {{ row.host }}</span>
+        </div>
+        <div data-htrack style="white-space:nowrap;will-change:transform;font-family:'MuseoModerno',sans-serif;font-weight:700;font-size:clamp(44px,10vw,140px);line-height:.92;letter-spacing:-.02em;color:#574740;transition:color .35s ease;padding-left:clamp(20px,5vw,80px)" style-hover="color:#F5ECE2">{{ row.marquee }}</div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<!-- WORK 04 LLM -->
+<section id="p-llm" data-screen-label="LLM" style="position:relative;z-index:1;padding:clamp(50px,8vh,100px) clamp(20px,5vw,80px) clamp(60px,9vh,120px)">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(34px,5vw,72px);align-items:center">
+    <div data-reveal style="transition:opacity 1s ease .1s,transform 1s ease .1s">
+      <div data-hover style="background:#0f1c20;border-radius:18px;padding:24px;box-shadow:0 30px 60px -28px rgba(15,28,32,.6);border:1px solid rgba(73,105,119,.25);transition:transform .4s ease" style-hover="transform:translateY(-6px)">
+        <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:22px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="width:42px;height:42px;border-radius:50%;background:#496977;display:flex;align-items:center;justify-content:center;font-family:'MuseoModerno';font-weight:600;color:#fff;font-size:18px">A</span><span style="font-family:'Space Mono',monospace;font-size:9px;color:#7fa3b0">{{ t.llm.assistant }}</span></div>
+          <div style="flex:1;max-width:90px;height:2px;background:linear-gradient(90deg,#496977,#AC6532);position:relative"><span style="position:absolute;top:-3px;left:50%;width:8px;height:8px;border-radius:50%;background:#fff;transform:translateX(-50%);animation:mlnPulse 1.4s ease-in-out infinite"></span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="width:42px;height:42px;border-radius:50%;background:#AC6532;display:flex;align-items:center;justify-content:center;font-family:'MuseoModerno';font-weight:600;color:#fff;font-size:18px">B</span><span style="font-family:'Space Mono',monospace;font-size:9px;color:#d0a07e">{{ t.llm.agent }}</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ t.llm.chat }}" as="msg" hint-placeholder-count="4">
+            <div style="display:flex;justify-content:{{ msg.justify }}">
+              <div style="max-width:84%;padding:11px 14px;border-radius:13px;background:{{ msg.bubbleBg }};border:1px solid {{ msg.bd }}">
+                <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:{{ msg.labelColor }};margin-bottom:4px">{{ msg.who }}</div>
+                <div style="font-size:13.5px;line-height:1.45;color:#e8eef0">{{ msg.text }}</div>
+              </div>
+            </div>
+          </sc-for>
+          <div style="display:flex;justify-content:flex-start"><div style="display:flex;gap:4px;padding:10px 14px;border-radius:13px;background:rgba(255,255,255,.05)"><span style="width:6px;height:6px;border-radius:50%;background:#7fa3b0;animation:mlnDot 1.2s ease-in-out infinite"></span><span style="width:6px;height:6px;border-radius:50%;background:#7fa3b0;animation:mlnDot 1.2s ease-in-out .15s infinite"></span><span style="width:6px;height:6px;border-radius:50%;background:#7fa3b0;animation:mlnDot 1.2s ease-in-out .3s infinite"></span></div></div>
+        </div>
+      </div>
+    </div>
+    <div data-reveal style="transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)">
+      <div style="display:flex;align-items:center;gap:13px;margin-bottom:20px"><span style="font-family:'MuseoModerno',sans-serif;font-weight:700;font-size:14px;color:#AC6532">04</span><span style="width:28px;height:1.5px;background:rgba(172,101,50,.45)"></span><span style="font-family:'Neue',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#8a7868">{{ t.llm.kicker }}</span></div>
+      <h3 style="font-family:'MuseoModerno',sans-serif;font-weight:600;font-size:clamp(30px,4.6vw,56px);line-height:1.0;letter-spacing:-.02em;color:#2A1A10;margin:0 0 12px">{{ t.llm.title }}</h3>
+      <p style="font-family:'Neue',sans-serif;font-style:italic;font-size:clamp(15px,1.5vw,19px);color:#496977;margin:0 0 18px">{{ t.llm.tagline }}</p>
+      <p style="font-size:16px;line-height:1.65;color:#6B5A4C;margin:0 0 26px;max-width:52ch">{{ t.llm.desc }}</p>
+      <ul style="margin:0 0 26px">
+        <sc-for list="{{ t.llm.items }}" as="item" hint-placeholder-count="5">
+          <li style="display:flex;gap:13px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(42,28,20,.08);font-size:15px;color:#2A1C14"><span style="color:#AC6532;font-size:9px">◆</span>{{ item }}</li>
+        </sc-for>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ t.llm.tech }}" as="tag" hint-placeholder-count="6">
+          <span style="font-family:'Space Mono',monospace;font-size:12px;padding:6px 12px;border:1px solid rgba(73,105,119,.3);border-radius:999px;color:#496977">{{ tag }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" data-screen-label="Contact" style="background:#211611;color:#FFF9F2;padding:clamp(80px,14vh,170px) clamp(20px,5vw,80px);position:relative;z-index:1;overflow:hidden">
+  <img src="assets/logo-mark.png" alt="" style="position:absolute;right:-4vw;bottom:-6vh;width:min(40vw,460px);opacity:.08;pointer-events:none"/>
+  <div data-reveal style="transition:opacity .9s ease,transform .9s ease;position:relative;z-index:1;max-width:900px">
+    <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.22em;color:#AC6532;margin-bottom:22px">// {{ t.contact.eyebrow }}</div>
+    <h2 style="font-family:'MuseoModerno',sans-serif;font-weight:600;font-size:clamp(34px,6vw,78px);line-height:1.02;letter-spacing:-.02em;margin:0 0 18px;max-width:15ch">{{ t.contact.title }}</h2>
+    <p style="font-size:clamp(16px,1.6vw,20px);line-height:1.6;color:#cBb6a2;max-width:48ch;margin:0 0 42px">{{ t.contact.sub }}</p>
+    <a href="mailto:info@melendo.app" data-hover style="display:inline-block;font-family:'MuseoModerno',sans-serif;font-weight:600;font-size:clamp(26px,4.6vw,60px);letter-spacing:-.02em;color:#FFF9F2;border-bottom:2px solid #AC6532;padding-bottom:6px;transition:color .25s ease" style-hover="color:#AC6532">info@melendo.app</a>
+    <div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:50px;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.05em">
+      <sc-for list="{{ t.contact.socials }}" as="s" hint-placeholder-count="3">
+        <a href="{{ s.href }}" data-hover style="color:#cBb6a2;border-bottom:1px solid transparent;padding-bottom:2px;transition:color .2s ease,border-color .2s ease" style-hover="color:#FFF9F2;border-color:#AC6532">↗ {{ s.label }}</a>
+      </sc-for>
+    </div>
+  </div>
+  <div style="position:relative;z-index:1;margin-top:clamp(60px,10vh,120px);padding-top:26px;border-top:1px solid rgba(255,249,242,.12);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:10px"><img src="assets/logo-mark.png" alt="" style="width:28px;height:24px;object-fit:contain;filter:brightness(1.4)"/><span style="font-family:'MuseoModerno';font-weight:600;font-size:19px">Melendo</span></div>
+    <span style="font-family:'Space Mono',monospace;font-size:11px;color:#8a7868">{{ t.footer.note }}</span>
+  </div>
+</section>
+
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  state = { lang: 'es', soundOn: false };
+
+  STR = {
+    es: {
+      nav: { work: 'Trabajo', contact: 'Contacto' },
+      hero: {
+        status: 'Disponible para nuevos proyectos',
+        greeting: 'Hola, soy Daniel.',
+        headline: 'Diseño y desarrollo software a medida.',
+        sub: 'Desarrollador freelance full-stack. Construyo productos rápidos, sólidos y con carácter: frontend, backend e IA aplicada donde de verdad aporta.',
+        loc: 'Remoto · España',
+        stack: 'Full-stack · Frontend · Backend · IA'
+      },
+      workIntro: { label: 'Trabajo seleccionado', count: '04', title: 'Cuatro mundos, un mismo oficio.', sub: 'Del frontend que se ve a la IA que piensa: esto es lo que construyo.' },
+      frontend: {
+        kicker: 'Frontend & Experiencia',
+        cat: '01 — Frontend & Experiencia',
+        title: 'Un mundo vibrante en la superficie',
+        tagline: 'Donde el usuario se enamora a primera vista.',
+        desc: 'Construyo interfaces que la gente quiere usar: rápidas, accesibles y con carácter. Cada pixel responde y cada interacción tiene intención. Es la cara visible de tu negocio y la primera impresión que decide si alguien se queda.',
+        items: ['React 19 + TypeScript', 'Sistemas de diseño y componentes reutilizables', 'Animación e interacción con propósito', 'Accesibilidad (WCAG) y rendimiento real', 'Responsive impecable, móvil primero'],
+        tech: ['React 19', 'TypeScript', 'Vite', 'TanStack', 'Motion']
+      },
+      backend: {
+        kicker: 'Backend & Datos',
+        cat: '02 — Backend & Datos',
+        title: 'Descenso a los cimientos',
+        tagline: 'Lo que sostiene el mundo no se ve, pero lo aguanta todo.',
+        desc: 'Bajo la superficie está la roca: bases de datos que no pierden un dato, APIs que no se caen y seguridad que no cede. Diseño esquemas, reglas de acceso y procesos que escalan sin sustos.',
+        layers: [
+          { depth: '-10 m', name: 'Interfaz', note: 'lo único que se ve' },
+          { depth: '-40 m', name: 'API & lógica', note: 'contratos · validación · permisos' },
+          { depth: '-120 m', name: 'Base de datos', note: 'PostgreSQL · RLS · integridad' },
+          { depth: '-300 m', name: 'Infraestructura', note: 'edge · colas · copias · seguridad' }
+        ],
+        items: ['Modelado de datos en PostgreSQL', 'Seguridad a nivel de fila (RLS) y autenticación', 'APIs REST y Edge Functions (Deno)', 'Pagos y TPV (Redsys · 3DES + HMAC-SHA256)', 'Pipelines ETL y automatización de datos'],
+        tech: ['Supabase', 'PostgreSQL', 'Row Level Security', 'Edge Functions', 'Redsys', 'Cloudflare']
+      },
+      pms: {
+        kicker: 'PMS · Hostelería',
+        cat: '03 — Proyecto · PMS Hostelería',
+        title: 'La posada nunca duerme',
+        tagline: 'Huéspedes que entran, huéspedes que salen, todo bajo control.',
+        desc: 'Un PMS a medida para hostelería: reservas, recepción, ocupación y cobros en un mismo sistema. Ya en producción real gestionando edificios completos. No es un SaaS genérico: se moldea a cómo trabaja tu negocio.',
+        items: ['Motor de reservas con pago bancario real', 'Backoffice de recepción y administración', 'Gestión de ocupación multi-edificio', 'Calendario, tarifas y disponibilidad', 'Informes operativos en tiempo real'],
+        tech: ['TanStack Start (SSR)', 'React 19', 'Supabase', 'Postgres + RLS', 'Redsys', 'Cloudflare'],
+        demo: 'Ver demo', video: 'Ver vídeo', ledger: 'Libro de la posada · hoy', live: 'en vivo',
+        rooms: [
+          { n: '101', name: 'Suite del Dragón', guest: 'Brunilda', time: '14:02', status: 'CHECK-IN', fg: '#7fd99a', bg: 'rgba(77,154,94,.18)', bd: 'rgba(77,154,94,.5)' },
+          { n: '204', name: 'Cámara de Runas', guest: 'Aldric', time: '—', status: 'ESTANCIA', fg: '#9fc3d2', bg: 'rgba(73,105,119,.22)', bd: 'rgba(73,105,119,.55)' },
+          { n: '112', name: 'Nido del Grifo', guest: 'Mara y Teo', time: '11:30', status: 'CHECK-OUT', fg: '#e0a474', bg: 'rgba(172,101,50,.2)', bd: 'rgba(172,101,50,.55)' },
+          { n: '308', name: 'Torre del Bardo', guest: 'Gremio errante', time: '20:00', status: 'RESERVA', fg: '#b3a0f0', bg: 'rgba(122,92,255,.16)', bd: 'rgba(122,92,255,.45)' }
+        ]
+      },
+      llm: {
+        kicker: 'IA · LLMs',
+        cat: '04 — IA · LLMs Empresariales',
+        title: 'Dos mentes que conversan',
+        tagline: 'Inteligencia que trabaja para tu negocio, no contra tu presupuesto.',
+        desc: 'Integro modelos de lenguaje en tu negocio con prompt engineering y orquestación: asistentes, automatizaciones y agentes que entienden tu dominio. No entreno modelos desde cero ni hago fine-tuning costoso: aprovecho lo mejor que ya existe y lo afino con prompts, contexto (RAG) y herramientas. Resultados rápidos, costes contenidos y nada de cajas negras.',
+        assistant: 'Asistente', agent: 'Agente',
+        items: ['Asistentes y chatbots de dominio específico', 'Prompt engineering y diseño de system prompts', 'Orquestación de agentes y herramientas (tool use)', 'Salidas estructuradas (JSON / function calling)', 'Evaluación y guardarraíles de calidad'],
+        tech: ['Claude (Anthropic)', 'Prompt engineering', 'RAG', 'Function calling', 'MCP', 'Integración de APIs'],
+        chat: [
+          { who: 'AGENTE', text: 'Consultando el PMS… 3 habitaciones libres. La Suite del Dragón encaja.', justify: 'flex-end', bubbleBg: 'rgba(172,101,50,.16)', bd: 'rgba(172,101,50,.3)', labelColor: '#e0a474' },
+          { who: 'ASISTENTE', text: 'Perfecto. Se la ofrezco y preparo el enlace de reserva con pago seguro.', justify: 'flex-start', bubbleBg: 'rgba(73,105,119,.2)', bd: 'rgba(73,105,119,.35)', labelColor: '#9fc3d2' },
+          { who: 'AGENTE', text: 'Enlace generado. Y todo sin escribir una sola consulta a mano.', justify: 'flex-end', bubbleBg: 'rgba(172,101,50,.16)', bd: 'rgba(172,101,50,.3)', labelColor: '#e0a474' },
+          { who: 'ASISTENTE', text: 'Pura ingeniería.', justify: 'flex-start', bubbleBg: 'rgba(73,105,119,.2)', bd: 'rgba(73,105,119,.35)', labelColor: '#9fc3d2' }
+        ]
+      },
+      contact: {
+        eyebrow: '¿Hablamos?',
+        title: 'Cuéntame qué quieres construir.',
+        sub: 'Te respondo rápido, sin formularios eternos ni comerciales de por medio. Solo tú, yo y tu proyecto.',
+        socials: [{ label: 'Email', href: 'mailto:info@melendo.app' }, { label: 'LinkedIn', href: '#' }, { label: 'GitHub', href: '#' }]
+      },
+      websIntro: { label: 'Webs en producción', count: '05', title: 'Sitios vivos, en la red.', sub: 'Cada línea es una web real. Haz clic para visitarla.' },
+      webs: [
+        { name: 'Nombre del sitio 01', kicker: 'Cliente · Sector', url: 'https://ejemplo-uno.com', host: 'ejemplo-uno.com' },
+        { name: 'Nombre del sitio 02', kicker: 'Cliente · Sector', url: 'https://ejemplo-dos.com', host: 'ejemplo-dos.com' },
+        { name: 'Nombre del sitio 03', kicker: 'Cliente · Sector', url: 'https://ejemplo-tres.com', host: 'ejemplo-tres.com' },
+        { name: 'Nombre del sitio 04', kicker: 'Cliente · Sector', url: 'https://ejemplo-cuatro.com', host: 'ejemplo-cuatro.com' }
+      ],
+      footer: { note: 'Diseñado y desarrollado por Melendo · 2026' }
+    },
+    en: {
+      nav: { work: 'Work', contact: 'Contact' },
+      hero: {
+        status: 'Available for new projects',
+        greeting: "Hi, I'm Daniel.",
+        headline: 'I design and build custom software.',
+        sub: 'Freelance full-stack developer. I build fast, solid products with character: frontend, backend, and AI applied where it actually matters.',
+        loc: 'Remote · Spain',
+        stack: 'Full-stack · Frontend · Backend · AI'
+      },
+      workIntro: { label: 'Selected work', count: '04', title: 'Four worlds, one craft.', sub: 'From the frontend you see to the AI that thinks: this is what I build.' },
+      frontend: {
+        kicker: 'Frontend & Experience',
+        cat: '01 — Frontend & Experience',
+        title: 'A vibrant world on the surface',
+        tagline: 'Where users fall in love at first sight.',
+        desc: 'I build interfaces people want to use: fast, accessible, and full of character. Every pixel responds and every interaction has intent. It is the visible face of your business and the first impression that decides whether someone stays.',
+        items: ['React 19 + TypeScript', 'Design systems & reusable components', 'Animation & interaction with purpose', 'Accessibility (WCAG) & real performance', 'Flawless responsive, mobile-first'],
+        tech: ['React 19', 'TypeScript', 'Vite', 'TanStack', 'Motion']
+      },
+      backend: {
+        kicker: 'Backend & Data',
+        cat: '02 — Backend & Data',
+        title: 'Descent to the foundations',
+        tagline: 'What holds the world up is invisible, but it carries everything.',
+        desc: 'Below the surface lies the bedrock: databases that never lose a record, APIs that never go down, and security that never gives. I design schemas, access rules, and processes that scale without surprises.',
+        layers: [
+          { depth: '-10 m', name: 'Interface', note: 'the only thing visible' },
+          { depth: '-40 m', name: 'API & logic', note: 'contracts · validation · permissions' },
+          { depth: '-120 m', name: 'Database', note: 'PostgreSQL · RLS · integrity' },
+          { depth: '-300 m', name: 'Infrastructure', note: 'edge · queues · backups · security' }
+        ],
+        items: ['Data modeling in PostgreSQL', 'Row Level Security (RLS) & authentication', 'REST APIs & Edge Functions (Deno)', 'Payments & POS (Redsys · 3DES + HMAC-SHA256)', 'ETL pipelines & data automation'],
+        tech: ['Supabase', 'PostgreSQL', 'Row Level Security', 'Edge Functions', 'Redsys', 'Cloudflare']
+      },
+      pms: {
+        kicker: 'PMS · Hospitality',
+        cat: '03 — Project · Hospitality PMS',
+        title: 'The inn never sleeps',
+        tagline: 'Guests checking in, guests checking out, all under control.',
+        desc: 'A custom PMS for hospitality: bookings, reception, occupancy, and payments in one system. Already in real production managing entire buildings. Not a generic SaaS: it molds to how your business works.',
+        items: ['Booking engine with real bank payments', 'Reception & administration backoffice', 'Multi-building occupancy management', 'Calendar, rates & availability', 'Real-time operational reports'],
+        tech: ['TanStack Start (SSR)', 'React 19', 'Supabase', 'Postgres + RLS', 'Redsys', 'Cloudflare'],
+        demo: 'View demo', video: 'Watch video', ledger: 'Inn ledger · today', live: 'live',
+        rooms: [
+          { n: '101', name: 'Dragon Suite', guest: 'Brunilda', time: '14:02', status: 'CHECK-IN', fg: '#7fd99a', bg: 'rgba(77,154,94,.18)', bd: 'rgba(77,154,94,.5)' },
+          { n: '204', name: 'Rune Chamber', guest: 'Aldric', time: '—', status: 'STAYING', fg: '#9fc3d2', bg: 'rgba(73,105,119,.22)', bd: 'rgba(73,105,119,.55)' },
+          { n: '112', name: "Griffin's Nest", guest: 'Mara & Teo', time: '11:30', status: 'CHECK-OUT', fg: '#e0a474', bg: 'rgba(172,101,50,.2)', bd: 'rgba(172,101,50,.55)' },
+          { n: '308', name: "Bard's Tower", guest: 'Wandering guild', time: '20:00', status: 'BOOKED', fg: '#b3a0f0', bg: 'rgba(122,92,255,.16)', bd: 'rgba(122,92,255,.45)' }
+        ]
+      },
+      llm: {
+        kicker: 'AI · LLMs',
+        cat: '04 — AI · Enterprise LLMs',
+        title: 'Two minds in conversation',
+        tagline: 'Intelligence that works for your business, not against your budget.',
+        desc: 'I integrate language models into your business with prompt engineering and orchestration: assistants, automations, and agents that understand your domain. I do not train models from scratch or do costly fine-tuning: I take the best of what already exists and shape it with prompts, context (RAG), and tools. Fast results, contained costs, and no black boxes.',
+        assistant: 'Assistant', agent: 'Agent',
+        items: ['Domain-specific assistants & chatbots', 'Prompt engineering & system prompt design', 'Agent & tool orchestration (tool use)', 'Structured outputs (JSON / function calling)', 'Evaluation & quality guardrails'],
+        tech: ['Claude (Anthropic)', 'Prompt engineering', 'RAG', 'Function calling', 'MCP', 'API integration'],
+        chat: [
+          { who: 'AGENT', text: 'Checking the PMS… 3 rooms free. The Dragon Suite fits.', justify: 'flex-end', bubbleBg: 'rgba(172,101,50,.16)', bd: 'rgba(172,101,50,.3)', labelColor: '#e0a474' },
+          { who: 'ASSISTANT', text: 'Perfect. I offer it and prepare the booking link with secure payment.', justify: 'flex-start', bubbleBg: 'rgba(73,105,119,.2)', bd: 'rgba(73,105,119,.35)', labelColor: '#9fc3d2' },
+          { who: 'AGENT', text: 'Link generated. And not a single query written by hand.', justify: 'flex-end', bubbleBg: 'rgba(172,101,50,.16)', bd: 'rgba(172,101,50,.3)', labelColor: '#e0a474' },
+          { who: 'ASSISTANT', text: 'Pure engineering.', justify: 'flex-start', bubbleBg: 'rgba(73,105,119,.2)', bd: 'rgba(73,105,119,.35)', labelColor: '#9fc3d2' }
+        ]
+      },
+      contact: {
+        eyebrow: "Let's talk",
+        title: 'Tell me what you want to build.',
+        sub: 'I reply fast, no endless forms and no sales reps in between. Just you, me, and your project.',
+        socials: [{ label: 'Email', href: 'mailto:info@melendo.app' }, { label: 'LinkedIn', href: '#' }, { label: 'GitHub', href: '#' }]
+      },
+      websIntro: { label: 'Sites in production', count: '05', title: 'Live sites, on the web.', sub: 'Each line is a real website. Click to visit it.' },
+      webs: [
+        { name: 'Site name 01', kicker: 'Client · Sector', url: 'https://example-one.com', host: 'example-one.com' },
+        { name: 'Site name 02', kicker: 'Client · Sector', url: 'https://example-two.com', host: 'example-two.com' },
+        { name: 'Site name 03', kicker: 'Client · Sector', url: 'https://example-three.com', host: 'example-three.com' },
+        { name: 'Site name 04', kicker: 'Client · Sector', url: 'https://example-four.com', host: 'example-four.com' }
+      ],
+      footer: { note: 'Designed & developed by Melendo · 2026' }
+    }
+  };
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = this.STR[lang];
+    const sep = '\u2003\u2014\u2003';
+    const mk = (s) => (s.toUpperCase() + sep).repeat(2);
+    const indexRows = [
+      { key: 'frontend', n: '01', title: t.frontend.title, kicker: t.frontend.kicker, anchor: '#p-frontend', dir: -1, marquee: mk(t.frontend.title) },
+      { key: 'backend', n: '02', title: t.backend.title, kicker: t.backend.kicker, anchor: '#p-backend', dir: 1, marquee: mk(t.backend.title) },
+      { key: 'pms', n: '03', title: t.pms.title, kicker: t.pms.kicker, anchor: '#p-pms', dir: -1, marquee: mk(t.pms.title) },
+      { key: 'llm', n: '04', title: t.llm.title, kicker: t.llm.kicker, anchor: '#p-llm', dir: 1, marquee: mk(t.llm.title) }
+    ];
+    const frontendCards = t.frontend.items.map((text, i) => ({ n: String(i + 1).padStart(2, '0'), text }));
+    const webRows = t.webs.map((w, i) => ({
+      n: String(i + 1).padStart(2, '0'),
+      name: w.name, kicker: w.kicker, url: w.url, host: w.host,
+      dir: i % 2 === 0 ? -1 : 1,
+      marquee: mk(w.name)
+    }));
+    return {
+      t, indexRows, frontendCards, webRows,
+      otherLang: lang === 'es' ? 'EN' : 'ES',
+      soundLabel: this.state.soundOn ? 'SOUND ON' : 'SOUND OFF',
+      soundColor: this.state.soundOn ? '#4d9a5e' : '#b8a594',
+      toggleLang: () => this.setState(s => ({ lang: s.lang === 'es' ? 'en' : 'es' })),
+      toggleSound: () => { this.ensureAudio(); this.setState(s => ({ soundOn: !s.soundOn })); }
+    };
+  }
+
+  ensureAudio() {
+    if (!this.ac) { try { this.ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
+    if (this.ac && this.ac.state === 'suspended') this.ac.resume();
+  }
+
+  blip(freq) {
+    if (!this.state.soundOn || !this.ac) return;
+    const o = this.ac.createOscillator(), g = this.ac.createGain();
+    o.type = 'square'; o.frequency.value = freq || 520;
+    o.connect(g).connect(this.ac.destination);
+    const t = this.ac.currentTime;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.04, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+    o.start(t); o.stop(t + 0.13);
+  }
+
+  shot() {
+    if (!this.state.soundOn || !this.ac) return;
+    const o = this.ac.createOscillator(), g = this.ac.createGain();
+    o.type = 'triangle';
+    const t = this.ac.currentTime;
+    o.frequency.setValueAtTime(220, t);
+    o.frequency.exponentialRampToValueAtTime(48, t + 0.12);
+    o.connect(g).connect(this.ac.destination);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.13, t + 0.006);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.2);
+    o.start(t); o.stop(t + 0.22);
+  }
+
+  componentDidMount() {
+    try { document.documentElement.setAttribute('data-loading', ''); } catch (e) {}
+
+    // Loader
+    const loader = document.getElementById('mln-loader');
+    const counter = document.getElementById('mln-counter');
+    const bar = document.getElementById('mln-bar');
+    let p = 0;
+    const finish = () => {
+      setTimeout(() => {
+        if (loader) { loader.style.opacity = '0'; loader.style.pointerEvents = 'none'; setTimeout(() => { loader.style.display = 'none'; }, 700); }
+        try { document.documentElement.removeAttribute('data-loading'); } catch (e) {}
+      }, 300);
+    };
+    const iv = setInterval(() => {
+      p = Math.min(100, p + Math.round(3 + Math.random() * 7));
+      if (counter) counter.textContent = String(p).padStart(3, '0');
+      if (bar) bar.style.width = p + '%';
+      if (p >= 100) { clearInterval(iv); finish(); }
+    }, 70);
+    setTimeout(() => { if (loader && loader.style.display !== 'none') { clearInterval(iv); if (bar) bar.style.width = '100%'; if (counter) counter.textContent = '100'; finish(); } }, 4500);
+
+    const fine = window.matchMedia('(pointer:fine)').matches;
+
+    // Game cursor (targeting reticle)
+    const cur = document.getElementById('mln-cursor');
+    const ret = document.getElementById('mln-reticle');
+    const dot = document.getElementById('mln-cdot');
+    const brackets = ['mln-b1', 'mln-b2', 'mln-b3', 'mln-b4'].map(id => document.getElementById(id));
+    if (fine && cur && ret) {
+      cur.style.display = 'block';
+      let rx = 0, ry = 0, x = 0, y = 0;
+      window.addEventListener('mousemove', e => {
+        x = e.clientX; y = e.clientY;
+        if (dot) dot.parentElement.style.transform = 'translate(-50%,-50%)';
+        cur.style.left = x + 'px'; cur.style.top = y + 'px';
+      });
+      const loop = () => { requestAnimationFrame(loop); };
+      loop();
+      const setHover = (on) => {
+        ret.style.width = on ? '54px' : '38px';
+        ret.style.height = on ? '54px' : '38px';
+        brackets.forEach(b => { if (b) b.style.height && (b.style.background = on ? '#496977' : '#AC6532'); });
+      };
+      document.addEventListener('mouseover', e => { if (e.target.closest && e.target.closest('[data-hover]')) setHover(true); });
+      document.addEventListener('mouseout', e => { if (e.target.closest && e.target.closest('[data-hover]')) setHover(false); });
+    }
+
+    // Hover blip
+    document.addEventListener('mouseover', e => { if (this.state.soundOn && e.target.closest && e.target.closest('[data-hover]')) this.blip(420 + Math.random() * 220); });
+
+    // Real preview thumbnails on hover over the index
+    const card = (n, txt) => '<div style="background:rgba(18,10,26,.5);border:1px solid rgba(255,255,255,.13);border-radius:9px;padding:9px"><div style="font:700 9px \'Space Mono\',monospace;color:#F25CA2;margin-bottom:4px">' + n + '</div><div style="font:500 10px \'Neue\',sans-serif;color:#fff;line-height:1.2">' + txt + '</div></div>';
+    const layer = (name, d) => '<div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:8px 11px"><span style="font:500 11px \'MuseoModerno\',sans-serif;color:#FFF9F2">' + name + '</span><span style="font:9px \'Space Mono\',monospace;color:#AC6532">' + d + '</span></div>';
+    const room = (t1, st, fg, bg, bd) => '<div style="display:flex;justify-content:space-between;align-items:center"><span style="font:500 11px \'MuseoModerno\',sans-serif;color:#FFF9F2">' + t1 + '</span><span style="font:700 8px \'Space Mono\',monospace;color:' + fg + ';background:' + bg + ';border:1px solid ' + bd + ';border-radius:5px;padding:3px 6px">' + st + '</span></div>';
+    const bub = (al, lc, who, txt, bg, bd) => '<div style="align-self:' + al + ';max-width:82%;background:' + bg + ';border:1px solid ' + bd + ';border-radius:11px;padding:9px 11px"><div style="font:9px \'Space Mono\',monospace;color:' + lc + ';margin-bottom:3px">' + who + '</div><div style="font:400 11px \'Neue\',sans-serif;color:#e8eef0;line-height:1.3">' + txt + '</div></div>';
+    this.previews = {
+      frontend: '<div style="position:absolute;inset:0;background:linear-gradient(150deg,#3a1c4e,#7a2f3e 58%,#AC6532);padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;align-content:center">' + card('01', 'React 19 + TS') + card('02', 'Sistemas de diseño') + card('03', 'Animación con propósito') + card('04', 'Accesibilidad WCAG') + '</div>',
+      backend: '<div style="position:absolute;inset:0;background:#1a120d;padding:14px;display:flex;flex-direction:column;justify-content:center;gap:7px">' + layer('Interfaz', '-10 m') + layer('API & lógica', '-40 m') + layer('Base de datos', '-120 m') + layer('Infraestructura', '-300 m') + '</div>',
+      pms: '<div style="position:absolute;inset:0;background:#2b1d14;padding:14px;display:flex;flex-direction:column;justify-content:center;gap:9px">' + room('101 · Suite del Dragón', 'CHECK-IN', '#7fd99a', 'rgba(77,154,94,.18)', 'rgba(77,154,94,.5)') + room('204 · Cámara de Runas', 'ESTANCIA', '#9fc3d2', 'rgba(73,105,119,.22)', 'rgba(73,105,119,.55)') + room('112 · Nido del Grifo', 'CHECK-OUT', '#e0a474', 'rgba(172,101,50,.2)', 'rgba(172,101,50,.55)') + room('308 · Torre del Bardo', 'RESERVA', '#b3a0f0', 'rgba(122,92,255,.16)', 'rgba(122,92,255,.45)') + '</div>',
+      llm: '<div style="position:absolute;inset:0;background:#0f1c20;padding:14px;display:flex;flex-direction:column;justify-content:center;gap:8px">' + bub('flex-end', '#e0a474', 'AGENTE', '3 habitaciones libres. La Suite encaja.', 'rgba(172,101,50,.16)', 'rgba(172,101,50,.3)') + bub('flex-start', '#9fc3d2', 'ASISTENTE', 'Perfecto, preparo el enlace de reserva.', 'rgba(73,105,119,.2)', 'rgba(73,105,119,.35)') + '</div>'
+    };
+    const prev = document.getElementById('mln-preview');
+    if (prev) prev.style.opacity = '0';
+    if (fine && prev) {
+      const box = prev.querySelector('[data-pv-box]');
+      const ttl = prev.querySelector('[data-pv-title]');
+      const kik = prev.querySelector('[data-pv-kicker]');
+      window.addEventListener('mousemove', e => { prev.style.left = e.clientX + 'px'; prev.style.top = e.clientY + 'px'; });
+      document.addEventListener('mouseover', e => {
+        const it = e.target.closest && e.target.closest('[data-prev]');
+        if (it) { const k = it.dataset.key; if (box && this.previews[k]) box.innerHTML = this.previews[k]; if (ttl) ttl.textContent = it.dataset.title || ''; if (kik) kik.textContent = it.dataset.kicker || ''; prev.style.opacity = '1'; prev.style.transform = 'translate(26px,-55%) scale(1)'; }
+      });
+      document.addEventListener('mouseout', e => {
+        const it = e.target.closest && e.target.closest('[data-prev]');
+        if (it) { const to = e.relatedTarget; if (!(to && to.closest && to.closest('[data-prev]'))) { prev.style.opacity = '0'; prev.style.transform = 'translate(26px,-55%) scale(.94)'; } }
+      });
+    }
+
+    // Horizontal-on-vertical scroll for the index rows
+    const hrows = Array.from(document.querySelectorAll('[data-hrow]'));
+    const onHScroll = () => {
+      const vh = window.innerHeight;
+      hrows.forEach(row => {
+        const track = row.querySelector('[data-htrack]');
+        if (!track) return;
+        const r = row.getBoundingClientRect();
+        const base = Math.max(0, track.scrollWidth - row.clientWidth);
+        let p = (vh - r.top) / (vh + r.height);
+        p = Math.max(0, Math.min(1, p));
+        const dir = parseFloat(row.dataset.dir) || 1;
+        const factor = 0.55;
+        const tx = dir === 1 ? -p * base * factor : -(1 - p) * base * factor;
+        track.style.transform = 'translateX(' + tx + 'px)';
+      });
+    };
+    window.addEventListener('scroll', onHScroll, { passive: true });
+    window.addEventListener('resize', onHScroll);
+    setTimeout(onHScroll, 80);
+
+    // Wandering background thread that traces the page; a marker rides it on scroll
+    const svg = document.getElementById('mln-thread');
+    const tBase = document.getElementById('mln-thread-base');
+    const tTrail = document.getElementById('mln-thread-trail');
+    const tDot = document.getElementById('mln-thread-dot');
+    const tStart = document.getElementById('mln-thread-start');
+    const tMeta = document.getElementById('mln-thread-meta');
+    const se = document.scrollingElement || document.documentElement;
+    let tLen = 0, tCur = 0, tSamples = [];
+    const absY = el => el.getBoundingClientRect().top + (se.scrollTop || window.pageYOffset || 0);
+
+    const catmull = (pts) => {
+      let d = 'M ' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1);
+      for (let i = 0; i < pts.length - 1; i++) {
+        const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+        const c1x = p1.x + (p2.x - p0.x) / 6, c1y = p1.y + (p2.y - p0.y) / 6;
+        const c2x = p2.x - (p3.x - p1.x) / 6, c2y = p2.y - (p3.y - p1.y) / 6;
+        d += ' C ' + c1x.toFixed(1) + ' ' + c1y.toFixed(1) + ' ' + c2x.toFixed(1) + ' ' + c2y.toFixed(1) + ' ' + p2.x.toFixed(1) + ' ' + p2.y.toFixed(1);
+      }
+      return d;
+    };
+
+    const buildThread = () => {
+      if (!svg || !tBase) return;
+      const W = document.documentElement.clientWidth;
+      const H = se.scrollHeight;
+      const h1 = document.querySelector('#top h1');
+      const header = document.querySelector('header');
+      const work = document.getElementById('work');
+      const contact = document.getElementById('contact');
+      const proj = ['p-frontend', 'p-backend', 'p-pms', 'p-llm'].map(id => document.getElementById(id)).filter(Boolean);
+      if (!h1 || !work || !contact) return;
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      svg.style.height = H + 'px';
+      const margin = Math.max(54, W * 0.085);
+      const left = margin, right = W - margin, cx = W / 2;
+      const headerH = header ? header.offsetHeight : 64;
+      const hBottom = absY(h1) + h1.offsetHeight + 24;
+      const workTop = absY(work);
+      const contactTop = absY(contact);
+      const startPt = { x: right, y: headerH + 26 };
+      const metaPt = { x: cx, y: contactTop - 14 };
+      const pts = [startPt, { x: right, y: hBottom }, { x: left, y: hBottom + 70 }, { x: right, y: Math.max(hBottom + 150, workTop - 24) }];
+      proj.forEach((s, i) => { pts.push({ x: i % 2 === 0 ? left : right, y: absY(s) + s.offsetHeight / 2 }); });
+      pts.push(metaPt);
+      const d = catmull(pts);
+      tBase.setAttribute('d', d);
+      tTrail.setAttribute('d', d);
+      tLen = tBase.getTotalLength();
+      tTrail.style.strokeDasharray = tLen;
+      tSamples = [];
+      const NS = 280;
+      for (let i = 0; i <= NS; i++) { const ln = tLen * i / NS; const sp = tBase.getPointAtLength(ln); tSamples.push({ len: ln, y: sp.y }); }
+      tTrail.style.strokeDashoffset = tLen - tCur;
+      if (tStart) { tStart.setAttribute('transform', 'translate(' + startPt.x + ',' + startPt.y + ')'); tStart.style.opacity = '1'; }
+      if (tMeta) { tMeta.setAttribute('transform', 'translate(' + metaPt.x + ',' + metaPt.y + ')'); tMeta.style.opacity = '1'; }
+      if (tDot) tDot.style.opacity = '1';
+    };
+
+    buildThread();
+    [150, 450, 1300].forEach(ms => setTimeout(buildThread, ms));
+    let rzt;
+    window.addEventListener('resize', () => { clearTimeout(rzt); rzt = setTimeout(buildThread, 150); });
+
+    const onThread = () => {
+      if (tLen && tBase && tSamples.length) {
+        const sy = se.scrollTop || window.pageYOffset || 0;
+        const targetY = sy + window.innerHeight * 0.5;
+        let lenAt;
+        if (targetY <= tSamples[0].y) lenAt = 0;
+        else if (targetY >= tSamples[tSamples.length - 1].y) lenAt = tLen;
+        else {
+          lenAt = tLen;
+          for (let i = 1; i < tSamples.length; i++) {
+            if (tSamples[i].y >= targetY) { const a = tSamples[i - 1], b = tSamples[i]; const f = (targetY - a.y) / ((b.y - a.y) || 1); lenAt = a.len + f * (b.len - a.len); break; }
+          }
+        }
+        tCur += (lenAt - tCur) * 0.16;
+        if (Math.abs(lenAt - tCur) < 0.5) tCur = lenAt;
+        tTrail.style.strokeDashoffset = tLen - tCur;
+        const pt = tBase.getPointAtLength(tCur);
+        tDot.setAttribute('transform', 'translate(' + pt.x + ',' + pt.y + ')');
+      }
+      requestAnimationFrame(onThread);
+    };
+    requestAnimationFrame(onThread);
+
+    // Click = fire the reticle
+    window.addEventListener('mousedown', e => {
+      const x = e.clientX, y = e.clientY;
+      const flash = document.createElement('div');
+      flash.style.cssText = 'position:fixed;z-index:9998;left:' + x + 'px;top:' + y + 'px;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle,#FFE9C7,#AC6532 55%,rgba(172,101,50,0));transform:translate(-50%,-50%);pointer-events:none';
+      document.body.appendChild(flash);
+      flash.animate([{ transform: 'translate(-50%,-50%) scale(.4)', opacity: 1 }, { transform: 'translate(-50%,-50%) scale(3.4)', opacity: 0 }], { duration: 360, easing: 'cubic-bezier(.2,.8,.2,1)' }).onfinish = () => flash.remove();
+      const ring = document.createElement('div');
+      ring.style.cssText = 'position:fixed;z-index:9997;left:' + x + 'px;top:' + y + 'px;width:16px;height:16px;border:2px solid rgba(73,105,119,.9);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none';
+      document.body.appendChild(ring);
+      ring.animate([{ transform: 'translate(-50%,-50%) scale(.3)', opacity: .9 }, { transform: 'translate(-50%,-50%) scale(2.8)', opacity: 0 }], { duration: 500, easing: 'ease-out' }).onfinish = () => ring.remove();
+      if (ret) ret.animate([{ transform: 'translate(-50%,-50%) scale(.68)' }, { transform: 'translate(-50%,-50%) scale(1.14)' }, { transform: 'translate(-50%,-50%) scale(1)' }], { duration: 260, easing: 'ease-out' });
+      this.shot();
+    });
+
+    // Reveal-on-scroll is handled purely in CSS (animation-timeline: view()).
+
+    // PMS live highlight
+    let a = 0;
+    this.pmsIv = setInterval(() => {
+      const rows = document.querySelectorAll('[data-pms-row]');
+      if (!rows.length) return;
+      rows.forEach((r, i) => { r.style.background = i === a ? 'rgba(172,101,50,.12)' : 'transparent'; });
+      a = (a + 1) % rows.length;
+    }, 2200);
+
+    // Konami easter egg
+    const seq = ['arrowup', 'arrowup', 'arrowdown', 'arrowdown', 'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a'];
+    let idx = 0;
+    window.addEventListener('keydown', e => {
+      const k = e.key.toLowerCase();
+      if (k === seq[idx]) { idx++; if (idx === seq.length) { idx = 0; this.retro(); } }
+      else { idx = (k === seq[0]) ? 1 : 0; }
+    });
+  }
+
+  retro() {
+    const egg = document.getElementById('mln-egg');
+    if (!egg) return;
+    egg.innerHTML = ''; egg.style.display = 'block';
+    for (let i = 0; i < 38; i++) {
+      const im = document.createElement('img');
+      im.src = 'assets/logo-mark.png';
+      const sz = 22 + Math.random() * 44;
+      im.style.cssText = 'position:fixed;left:' + (Math.random() * 100) + 'vw;top:-90px;width:' + sz + 'px;opacity:.9;image-rendering:pixelated;animation:mlnFall ' + (2.2 + Math.random() * 2.6) + 's linear ' + (Math.random() * 0.9) + 's forwards';
+      egg.appendChild(im);
+    }
+    const msg = document.createElement('div');
+    msg.textContent = '▲▲▼▼◀▶◀▶ B A';
+    msg.style.cssText = 'position:fixed;left:50%;top:46%;transform:translate(-50%,-50%);font:700 clamp(20px,5vw,52px)/1 "Space Mono",monospace;color:#AC6532;letter-spacing:3px;text-shadow:4px 4px 0 #211611;white-space:nowrap';
+    egg.appendChild(msg);
+    const sub = document.createElement('div');
+    sub.textContent = this.state.lang === 'es' ? 'MODO RETRO DESBLOQUEADO' : 'RETRO MODE UNLOCKED';
+    sub.style.cssText = 'position:fixed;left:50%;top:56%;transform:translate(-50%,-50%);font:700 14px/1 "Space Mono",monospace;color:#211611;letter-spacing:4px';
+    egg.appendChild(sub);
+    if (this.state.soundOn) { [0, 1, 2, 3, 4].forEach(n => setTimeout(() => this.blip(280 + n * 130), n * 100)); }
+    setTimeout(() => { egg.style.display = 'none'; egg.innerHTML = ''; }, 4400);
+  }
+
+  componentWillUnmount() { if (this.pmsIv) clearInterval(this.pmsIv); }
+}
+</script>
+</body>
+</html>
