@@ -16,7 +16,7 @@
     function onScroll() { if (hdr) hdr.classList.toggle("is-scrolled", window.scrollY > 8); }
     function setH() { if (hdr) document.documentElement.style.setProperty("--hdr-h", hdr.offsetHeight + "px"); }
     window.addEventListener("scroll", onScroll, { passive: true }); window.addEventListener("resize", setH); onScroll(); setH();
-    reveal(); blink(); hoverTag(); filters(); lazyVideos();
+    reveal(); blink(); hoverTag(); filters(); lazyVideos(); heroPattern(); parallax();
     document.querySelectorAll(".mascot").forEach(function (m) {
       m.addEventListener("click", function () { var c = document.getElementById("contacto"); if (c) window.scrollTo({ top: c.getBoundingClientRect().top + window.scrollY - 90, behavior: reduced ? "auto" : "smooth" }); });
     });
@@ -31,6 +31,52 @@
       en.forEach(function (e) { var v = e.target; if (e.isIntersecting) play(v); else if (v.getAttribute("src") && v.pause) v.pause(); });
     }, { rootMargin: "300px 0px" });
     vids.forEach(function (v) { io.observe(v); });
+  }
+
+  function heroPattern() {
+    if (reduced) return;
+    var hero = document.getElementById("hero");
+    if (!hero || window.matchMedia("(pointer: coarse)").matches) return;
+    var base = hero.querySelector(".hero__pattern:not(.hero__pattern--glow)");
+    var glow = hero.querySelector(".hero__pattern--glow");
+    var raf = null, mx = 0, my = 0, rect = null;
+    hero.addEventListener("mouseenter", function () { hero.classList.add("is-hovering"); rect = hero.getBoundingClientRect(); });
+    hero.addEventListener("mouseleave", function () {
+      hero.classList.remove("is-hovering");
+      if (base) base.style.transform = "";
+      if (glow) glow.style.transform = "";
+    });
+    hero.addEventListener("mousemove", function (e) {
+      rect = rect || hero.getBoundingClientRect();
+      mx = e.clientX - rect.left; my = e.clientY - rect.top;
+      hero.style.setProperty("--mx", mx + "px");
+      hero.style.setProperty("--my", my + "px");
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = null;
+        var dx = (mx / rect.width - 0.5), dy = (my / rect.height - 0.5);
+        if (base) base.style.transform = "translate(" + (-dx * 16).toFixed(1) + "px," + (-dy * 16).toFixed(1) + "px)";
+        if (glow) glow.style.transform = "translate(" + (dx * 10).toFixed(1) + "px," + (dy * 10).toFixed(1) + "px)";
+      });
+    });
+  }
+  function parallax() {
+    if (reduced) return;
+    var els = [].slice.call(document.querySelectorAll("[data-parallax]"));
+    if (!els.length) return;
+    var ticking = false;
+    function update() {
+      var vh = window.innerHeight;
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        var off = (r.top + r.height / 2 - vh / 2) / vh;
+        var speed = parseFloat(el.dataset.parallax) || 12;
+        el.style.transform = "translate3d(0," + (-off * speed).toFixed(2) + "px,0)";
+      });
+      ticking = false;
+    }
+    window.addEventListener("scroll", function () { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+    update();
   }
   function reveal() {
     var els = [].slice.call(document.querySelectorAll(".reveal"));
