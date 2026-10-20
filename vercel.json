@@ -3,13 +3,15 @@
     { "source": "/proyectos/ride-the-wave.html",    "destination": "/ride-the-wave.html",    "permanent": false },
     { "source": "/proyectos/residencial-bora.html", "destination": "/residencial-bora.html", "permanent": false },
     { "source": "/proyectos/la-nucia-one.html",     "destination": "/la-nucia-one.html",     "permanent": false },
-    { "source": "/proyectos/activum-en-papel.html", "destination": "/activum-en-papel.html", "permanent": false },
+    { "source": "/proyectos/activum-en-papel.html", "destination": "/marca-en-papel.html", "permanent": false },
     { "source": "/proyectos/blink-malaga.html",     "destination": "/blink-malaga.html",     "permanent": false },
-    { "source": "/proyectos/activum-redes.html",    "destination": "/activum-redes.html",    "permanent": false },
+    { "source": "/proyectos/activum-redes.html",    "destination": "/redes-consultora-inmobiliaria.html", "permanent": false },
     { "source": "/proyectos/kroma-living.html",     "destination": "/kroma-living.html",     "permanent": false },
     { "source": "/proyectos/array-go.html",         "destination": "/arraygo.html",          "permanent": false },
     { "source": "/proyectos/helia.html",            "destination": "/helia.html",            "permanent": false },
     { "source": "/campanas/residencial-gregal.html","destination": "/residencial-gregal.html","permanent": false },
-    { "source": "/campanas/yugo-la-cartuja.html",   "destination": "/yugo-la-cartuja.html",  "permanent": false }
+    { "source": "/campanas/yugo-la-cartuja.html",   "destination": "/yugo-la-cartuja.html",  "permanent": false },
+    { "source": "/activum-en-papel.html",           "destination": "/marca-en-papel.html",   "statusCode": 301 },
+    { "source": "/activum-redes.html",              "destination": "/redes-consultora-inmobiliaria.html", "statusCode": 301 }
   ]
 }
