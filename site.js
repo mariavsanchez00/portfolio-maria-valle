@@ -8,6 +8,8 @@
     lang = l; document.body.dataset.lang = l; document.documentElement.lang = l;
     try { localStorage.setItem("mv-lang", l); } catch (e) {}
     document.querySelectorAll(".lang-switch button").forEach(function (b) { b.classList.toggle("is-active", b.dataset.lang === l); });
+    document.querySelectorAll("[data-alt-es]").forEach(function (el) { el.setAttribute("alt", el.getAttribute("data-alt-" + l) || el.getAttribute("data-alt-es")); });
+    document.querySelectorAll("[data-label-es]").forEach(function (el) { el.setAttribute("aria-label", el.getAttribute("data-label-" + l) || el.getAttribute("data-label-es")); });
     if (typeof fitFigures === "function") setTimeout(fitFigures, 0);
   }
   function boot() {
@@ -17,7 +19,7 @@
     function onScroll() { if (hdr) hdr.classList.toggle("is-scrolled", window.scrollY > 8); }
     function setH() { if (hdr) document.documentElement.style.setProperty("--hdr-h", hdr.offsetHeight + "px"); }
     window.addEventListener("scroll", onScroll, { passive: true }); window.addEventListener("resize", setH); onScroll(); setH();
-    reveal(); blink(); hoverTag(); filters(); lazyVideos(); heroPattern(); parallax(); try { headerLogo(); } catch (e) { var h0 = document.querySelector(".hdr"); if (h0) h0.classList.remove("is-logo-hidden"); } fitFigures(); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitFigures); var rz; window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(fitFigures, 120); });
+    reveal(); blink(); hoverTag(); filters(); lazyVideos(); playInView(); heroPattern(); parallax(); try { headerLogo(); } catch (e) { var h0 = document.querySelector(".hdr"); if (h0) h0.classList.remove("is-logo-hidden"); } fitFigures(); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitFigures); var rz; window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(fitFigures, 120); });
     document.querySelectorAll(".mascot").forEach(function (m) {
       m.addEventListener("click", function () { var c = document.getElementById("contacto"); if (c) window.scrollTo({ top: c.getBoundingClientRect().top + window.scrollY - 90, behavior: reduced ? "auto" : "smooth" }); });
     });
@@ -31,6 +33,20 @@
     var io = new IntersectionObserver(function (en) {
       en.forEach(function (e) { var v = e.target; if (e.isIntersecting) play(v); else if (v.getAttribute("src") && v.pause) v.pause(); });
     }, { rootMargin: "300px 0px" });
+    vids.forEach(function (v) { io.observe(v); });
+  }
+
+  function playInView() {
+    var vids = [].slice.call(document.querySelectorAll("video.pv"));
+    if (!vids.length) return;
+    if (reduced || !("IntersectionObserver" in window)) { vids.forEach(function (v) { v.controls = true; }); return; }
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      });
+    }, { threshold: 0.35 });
     vids.forEach(function (v) { io.observe(v); });
   }
 
