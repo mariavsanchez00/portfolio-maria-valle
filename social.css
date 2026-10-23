@@ -95,3 +95,4 @@
 .so__wide{margin:clamp(48px,8vh,80px) auto 0;max-width:1100px}
 .so__wide img{width:100%;height:auto;display:block;border-radius:var(--r-lg)}
 .pf__bio b{font-weight:700}
+.so__film{max-width:1000px;margin:clamp(48px,8vh,80px) auto 0}
